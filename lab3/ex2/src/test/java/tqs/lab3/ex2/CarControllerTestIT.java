@@ -60,14 +60,20 @@ public class CarControllerTestIT {
         ResponseEntity<Car[]> response = restTemplate.getForEntity("/api/cars", Car[].class);
         assertThat(response.getBody()).hasSize(0);
     }
-
-    @Test
+      
+    @Test 
     void whenValidInput_thenGetCar() {
         Car tesla = new Car("Tesla", "Model S");
-        carRepository.saveAndFlush(tesla);
+        Car audi = new Car("Audi", "A4");
+        Car bmw = new Car("BMW", "M3");
 
-        ResponseEntity<Car> response = restTemplate.getForEntity("/api/cars/1", Car.class);
+        carRepository.saveAndFlush(tesla);
+        carRepository.saveAndFlush(audi);
+        carRepository.saveAndFlush(bmw);
+
+        ResponseEntity<Car> response = restTemplate.getForEntity("/api/cars/" + tesla.getCarId(), Car.class);
         assertThat(response.getBody()).isEqualTo(tesla);
     }
+    
 
 }

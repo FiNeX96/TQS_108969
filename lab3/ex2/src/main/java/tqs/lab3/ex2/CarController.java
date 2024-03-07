@@ -3,8 +3,6 @@ package tqs.lab3.ex2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tqs.lab3.ex2.Car;
-import tqs.lab3.ex2.CarManagerService;
 import java.util.List;
 
 
