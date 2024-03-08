@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: test.java.lab4.Ex2Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.14 s <<< FAILURE! - in test.java.lab4.Ex2Test
+ex2Test{ChromeDriver}  Time elapsed: 0.073 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [org.openqa.selenium.chrome.ChromeDriver arg0] in method [public void test.java.lab4.Ex2Test.ex2Test(org.openqa.selenium.chrome.ChromeDriver)].
+
