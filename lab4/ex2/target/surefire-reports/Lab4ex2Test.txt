@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: Lab4ex2Test
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.601 s <<< FAILURE! - in Lab4ex2Test
+lab4ex2  Time elapsed: 0.031 s  <<< ERROR!
+org.junit.jupiter.api.extension.ParameterResolutionException: Failed to resolve parameter [org.openqa.selenium.chrome.ChromeDriver arg0] in constructor [public Lab4ex2Test(org.openqa.selenium.chrome.ChromeDriver)]: There was an error creating WebDriver object for Chrome
+Caused by: io.github.bonigarcia.wdm.config.WebDriverManagerException: There was an error creating WebDriver object for Chrome
+Caused by: java.lang.reflect.InvocationTargetException
+Caused by: org.openqa.selenium.SessionNotCreatedException: 
+Could not start a new session. Response code 500. Message: unknown error: cannot find Chrome binary 
+Host info: host: 'finex', ip: '127.0.1.1'
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Linux', os.arch: 'amd64', os.version: '5.15.146.1-microsoft-standard-WSL2', java.version: '17.0.10'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: chrome, goog:chromeOptions: {args: [], extensions: []}}]}]
+
