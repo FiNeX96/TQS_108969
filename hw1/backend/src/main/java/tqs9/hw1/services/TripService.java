@@ -1,9 +1,6 @@
 package tqs9.hw1.services;
 import tqs9.hw1.models.*;
 import tqs9.hw1.repositories.TripRepository;
-import tqs9.hw1.repositories.TripRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +30,18 @@ public class TripService {
       
     public List<Trip> listTripsFiltered(String origin, String destination, String date) {
         return tripsRepository.findByOriginAndDestinationAndDate(origin, destination, date);
+    }
+
+    public List<String> getDates() {
+        return tripsRepository.findDates();
+    }
+
+    public List<String> getOrigins() {
+        return tripsRepository.findOrigins();
+    }
+
+    public List<String> getDestinations() {
+        return tripsRepository.findDestinations();
     }
     
 

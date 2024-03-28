@@ -43,6 +43,8 @@ function TripDetails() {
             <p className="text-gray-700">{trip.date}</p>
             <p className="mt-4 text-lg font-semibold">Time:</p>
             <p className="text-gray-700">{trip.time}</p>
+            <p className="mt-4 text-lg font-semibold">Bus Number:</p>
+            <p className="text-gray-700">{trip.busID}</p>
           </div>
           {showBuyTicketButton && (
             <div className="space-y-4 pt-20">
