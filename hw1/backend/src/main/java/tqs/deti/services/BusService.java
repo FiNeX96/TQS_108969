@@ -1,11 +1,11 @@
-package tqs.deti.hw1.services;
+package tqs.deti.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import tqs.deti.hw1.repositories.BusRepository;
-import tqs.deti.hw1.models.Bus;
+import tqs.deti.repositories.BusRepository;
+import tqs.deti.models.Bus;
 
 
 @Service

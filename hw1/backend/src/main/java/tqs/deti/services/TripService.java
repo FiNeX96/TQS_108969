@@ -1,7 +1,7 @@
-package tqs.deti.hw1.services;
+package tqs.deti.services;
 
-import tqs.deti.hw1.models.Trip;
-import tqs.deti.hw1.repositories.TripRepository;
+import tqs.deti.models.Trip;
+import tqs.deti.repositories.TripRepository;
 import java.util.List;
 import java.util.ArrayList;
 

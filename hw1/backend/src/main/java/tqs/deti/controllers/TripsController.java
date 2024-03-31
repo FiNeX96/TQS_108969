@@ -1,4 +1,4 @@
-package tqs.deti.hw1.controllers;
+package tqs.deti.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tqs.deti.hw1.services.TripService;
-import tqs.deti.hw1.models.Trip;
+import tqs.deti.services.TripService;
+import tqs.deti.models.Trip;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.slf4j.Logger;

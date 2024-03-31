@@ -1,4 +1,4 @@
-package tqs.deti.hw1;
+package tqs.deti;
 
 import java.util.Arrays;
 

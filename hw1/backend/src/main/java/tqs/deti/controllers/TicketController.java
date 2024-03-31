@@ -1,4 +1,4 @@
-package tqs.deti.hw1.controllers;
+package tqs.deti.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.http.HttpStatus;
 
-import tqs.deti.hw1.services.TicketService;
-import tqs.deti.hw1.services.BusService;
-import tqs.deti.hw1.services.TripService;
-import tqs.deti.hw1.models.Ticket;
-import tqs.deti.hw1.models.Trip;
-import tqs.deti.hw1.models.Seat;
-import tqs.deti.hw1.models.Bus;
-import tqs.deti.hw1.models.TicketData;
-import tqs.deti.hw1.services.TicketFieldValidator;
+import tqs.deti.services.TicketService;
+import tqs.deti.services.BusService;
+import tqs.deti.services.TripService;
+import tqs.deti.models.Ticket;
+import tqs.deti.models.Trip;
+import tqs.deti.models.Seat;
+import tqs.deti.models.Bus;
+import tqs.deti.models.TicketData;
+import tqs.deti.services.TicketFieldValidator;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package tqs.deti.hw1.services;
+package tqs.deti.services;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

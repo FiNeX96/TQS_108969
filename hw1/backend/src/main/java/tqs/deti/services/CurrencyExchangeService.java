@@ -1,4 +1,4 @@
-package tqs.deti.hw1.services;
+package tqs.deti.services;
 
 import java.net.URL;
 import java.net.HttpURLConnection;

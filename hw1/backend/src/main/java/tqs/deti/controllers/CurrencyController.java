@@ -1,9 +1,9 @@
-package tqs.deti.hw1.controllers;
+package tqs.deti.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import tqs.deti.hw1.services.CurrencyExchangeService;
+import tqs.deti.services.CurrencyExchangeService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,4 +1,4 @@
-package tqs.deti.hw1.models;
+package tqs.deti.models;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;

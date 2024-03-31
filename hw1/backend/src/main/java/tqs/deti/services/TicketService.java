@@ -1,9 +1,9 @@
-package tqs.deti.hw1.services;
+package tqs.deti.services;
 
-import tqs.deti.hw1.models.Ticket;
-import tqs.deti.hw1.models.Trip;
-import tqs.deti.hw1.repositories.TicketRepository;
-import tqs.deti.hw1.repositories.TripRepository;
+import tqs.deti.models.Ticket;
+import tqs.deti.models.Trip;
+import tqs.deti.repositories.TicketRepository;
+import tqs.deti.repositories.TripRepository;
 
 import java.util.List;
 
