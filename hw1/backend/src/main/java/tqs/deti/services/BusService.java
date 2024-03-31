@@ -18,6 +18,14 @@ public class BusService {
         return busRepository.findById(id);
     }
 
+    public Iterable<Bus> findAll() {
+        return busRepository.findAll();
+    }
+
+    public Bus addBus(Bus bus) {
+        return busRepository.save(bus);
+    }
+
 
 
 

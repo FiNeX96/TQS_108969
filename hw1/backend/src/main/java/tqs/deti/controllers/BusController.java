@@ -4,13 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -43,6 +44,22 @@ public class BusController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Bus not found!");
         }
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<Iterable<Bus>> listBuses() {
+        logger.info("List of buses requested");
+        return ResponseEntity.ok(busService.findAll());
+    }
+
+
+    @PostMapping("/add")
+    public ResponseEntity<Bus> addBus(@RequestBody Bus bus) {
+        Bus bus2 = busService.addBus(bus);
+        logger.info("Bus " + bus2.getName() + " added");
+        return ResponseEntity.ok(bus2);
+    }
+    
+
 
 
     

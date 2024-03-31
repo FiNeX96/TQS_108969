@@ -8,11 +8,13 @@ import java.util.List;
 @Repository 
 public interface TicketRepository extends JpaRepository<Ticket, Integer>{
 
-    public Ticket findById(int id);
+    public Ticket findById(String id);
 
     public List<Ticket> findByTripID(int tripID);
 
     public Ticket findBySeatNumberAndTripID(int seatNumber, int tripID);
+
+    public void deleteByTripID(int tripID);
 
 
     

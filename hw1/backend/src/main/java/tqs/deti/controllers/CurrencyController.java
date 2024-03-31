@@ -31,4 +31,9 @@ public class CurrencyController {
         return ResponseEntity.ok(currencyExchangeService.listCurrencies());
     }
 
+    @GetMapping("/exchange")
+    public ResponseEntity<Double> exchange(String from, String to) throws Exception {
+        return ResponseEntity.ok(currencyExchangeService.exchange(from, to));
+    }
+
 }

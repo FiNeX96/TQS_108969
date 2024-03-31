@@ -3,8 +3,12 @@ package tqs.deti.configs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import java.util.ArrayList;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import tqs.deti.models.Bus;
@@ -14,7 +18,10 @@ import tqs.deti.repositories.BusRepository;
 import tqs.deti.repositories.TripRepository;
 
 @Component
+@ConditionalOnProperty(name = "spring.profiles.active", havingValue = "dev")
 public class DefaultValues implements ApplicationRunner {
+
+    private final static Logger logger = LoggerFactory.getLogger(DefaultValues.class);
 
     @Autowired
     private BusRepository busRepository;
@@ -24,6 +31,8 @@ public class DefaultValues implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        logger.info("Creating default values");
 
         String premium = "premium";
         String lisboa = "Lisboa";

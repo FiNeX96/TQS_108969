@@ -24,5 +24,21 @@ public interface TripRepository extends JpaRepository<Trip, Integer>{
     @Query("SELECT DISTINCT t.destination FROM Trip t")
     List<String> findDestinations();
 
+    public void deleteById(int id);
+
+    public List<Trip> findByOrigin(String origin);
+
+    public List<Trip> findByDestination(String destination);
+
+    public List<Trip> findByDate(String date);
+
+    public void deleteByOrigin(String origin);
+
+    public void deleteByDestination(String destination);
+
+    public List<Trip> findByTime(String time);
+
+
+
     
 }
