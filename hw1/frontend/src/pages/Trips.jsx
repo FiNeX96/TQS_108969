@@ -16,7 +16,13 @@ function Trips() {
   };
 
   const tripsQuery = useQuery({
-    queryKey: ["trips", selectedOrigin, selectedDestination, selectedDate],
+    queryKey: [
+      "trips",
+      selectedOrigin,
+      selectedDestination,
+      selectedDate,
+      selectedCurrency,
+    ],
     queryFn: async () => {
       // Construct the query string dynamically
       let queryString = "";
@@ -28,6 +34,9 @@ function Trips() {
       }
       if (selectedDate) {
         queryString += `date=${selectedDate}&`;
+      }
+      if (selectedCurrency) {
+        queryString += `currency=${selectedCurrency}&`;
       }
       // Remove the trailing '&' if it exists
       if (queryString.endsWith("&")) {
@@ -57,7 +66,20 @@ function Trips() {
       await fetchData("http://localhost:8080/trips/get_dates"),
   });
 
+  const getCurrencies = useQuery({ 
+    queryKey: ["currencies"],
+    queryFn: async () =>
+      await fetchData("http://localhost:8080/currencies/list"),
+
+  });
+
   // Access data, loading states, and errors using destructuring
+  const {
+    isLoading: currenciesLoading,
+    error: currenciesError,
+    data: currenciesData,
+  } = getCurrencies;
+
   const {
     isLoading: tripsLoading,
     error: tripsError,
@@ -79,22 +101,29 @@ function Trips() {
     data: datesData,
   } = datesQuery;
 
+  const goBack = () => {
+    navigate(-1);
+  }
+
   return (
+    <> 
+    <button onClick={goBack}>Go back</button>
     <div className="flex justify-center text-black space-y-8">
       <div className="w-full lg:w-3/4 xl:w-1/2 mt-4 space-y-8">
         <h1 className="text-left mt-4 font-bold">Trips Page </h1>
         {(tripsLoading ||
           originsLoading ||
           destinationsLoading ||
-          datesLoading) && <p>Loading trips...</p>}
-        {(tripsError || originsError || destinationsError || datesError) && (
-          <p>Error: {error.message}</p>
+          datesLoading ||
+          currenciesLoading) && <p>Loading trips...</p>}
+        {(tripsError || originsError || destinationsError || datesError || currenciesError) && (
+          <p>Error: {error?.message}</p>
         )}
 
         <div className="flex flex-row space-x-4 ">
           <span>Select Origin</span>
           <select
-            className="select bg-slate-200 select-success w-full max-w-xs"
+            className="select bg-slate-200 select-success w-max  "
             value={selectedOrigin}
             onChange={(e) => setSelectedOrigin(e.target.value)}
           >
@@ -109,7 +138,7 @@ function Trips() {
 
           <span>Select Destination</span>
           <select
-            className="select bg-slate-200 select-success w-full max-w-xs"
+            className="select bg-slate-200 select-success w-max  "
             value={selectedDestination}
             onChange={(e) => setSelectedDestination(e.target.value)}
           >
@@ -124,7 +153,7 @@ function Trips() {
 
           <span>Select Date</span>
           <select
-            className="select bg-slate-200 select-success w-max max-w-xs"
+            className="select bg-slate-200 select-success w-max "
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
           >
@@ -133,6 +162,20 @@ function Trips() {
               datesData.map((date) => (
                 <option key={date} value={date}>
                   {date}
+                </option>
+              ))}
+          </select>
+          <span>Select Currency</span>
+          <select
+            className="select bg-slate-200 select-success w-max max-w-xs"
+            value={selectedCurrency}
+            onChange={(e) => setSelectedCurrency(e.target.value)}
+          >
+            {currenciesData &&
+              currenciesData.length > 0 &&
+              currenciesData.map((currency) => (
+                <option key={currency} value={currency}>
+                  {currency}
                 </option>
               ))}
           </select>
@@ -162,41 +205,44 @@ function Trips() {
               </div>
             </div>
             <div>
-              { tripsData.length > 0 && tripsData.map((trip) => (
-                <div
-                  key={trip.id}
-                  className="flex items-center bg-white hover:bg-gray-100 cursor-pointer"
-                  onClick={() => navigate(`/trip_details/${trip.id}`)}
-                >
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.id}
+              {tripsData.length > 0 &&
+                tripsData.map((trip) => (
+                  <div
+                    key={trip.id}
+                    className="flex items-center bg-white hover:bg-gray-100 cursor-pointer"
+                    onClick={() => navigate(`/trip_details/${trip.id}`)}
+                  >
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.id}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.origin}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.destination}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.date}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.time}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {trip.busID}
+                    </div>
+                    <div className="w-1/4 px-4 py-2 border-r border-gray-300">
+                      {Number(trip.price).toFixed(2)} {selectedCurrency}
+                    </div>
                   </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.origin}
-                  </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.destination}
-                  </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.date}
-                  </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.time}
-                  </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.busID}
-                  </div>
-                  <div className="w-1/4 px-4 py-2 border-r border-gray-300">
-                    {trip.price} {selectedCurrency}
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
         )}
       </div>
     </div>
+    </>
   );
+
 }
 
 export default Trips;

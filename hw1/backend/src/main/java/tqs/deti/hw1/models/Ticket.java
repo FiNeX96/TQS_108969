@@ -1,4 +1,4 @@
-package tqs9.hw1.models;
+package tqs.deti.hw1.models;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
+import org.hibernate.annotations.GenericGenerator;
+
 @Getter
 @Setter
 @ToString
@@ -16,11 +19,13 @@ import lombok.ToString;
 @Table(name = "tickets")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Let JPA generate ID
-    private int id;
-    private int price;
-
+    @GeneratedValue(strategy = GenerationType.UUID) // Let JPA generate ID
+    @GenericGenerator(name = "system-uuid")
+    private String id;
+    private String price; // account for currency changes
     private int tripID;
-
     private int seatNumber;
+    private String name;
+    private int phone;
+    private String email;
 }

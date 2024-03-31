@@ -1,4 +1,4 @@
-package tqs9.hw1.models;
+package tqs.deti.hw1.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

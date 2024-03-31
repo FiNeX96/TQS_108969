@@ -1,7 +1,6 @@
-package tqs9.hw1.models;
-
+package tqs.deti.hw1.models;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +33,6 @@ public class Trip {
 
     @OneToMany(cascade=CascadeType.PERSIST)
     private List<Seat> seats;
-
     private String origin;
     private String destination;
     private String date;

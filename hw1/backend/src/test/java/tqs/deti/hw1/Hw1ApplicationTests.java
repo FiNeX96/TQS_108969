@@ -1,4 +1,4 @@
-package tqs9.hw1;
+package tqs.deti.hw1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

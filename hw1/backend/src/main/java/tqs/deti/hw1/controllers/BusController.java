@@ -1,30 +1,33 @@
-package tqs9.hw1.controllers;
+package tqs.deti.hw1.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestBody;
 
 import org.springframework.http.HttpStatus;
 
-import tqs9.hw1.services.*;
-import tqs9.hw1.models.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import tqs.deti.hw1.services.BusService;
+import tqs.deti.hw1.models.Bus;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping(path = "/bus")
 public class BusController {
+
+    private static final Logger logger = LoggerFactory.getLogger(BusController.class);
 
     @Autowired
     private BusService busService;
@@ -33,6 +36,7 @@ public class BusController {
     @GetMapping("/get")
     public ResponseEntity<Bus> getBus(@RequestParam int id) {
         Bus bus = busService.getBus(id);
+        logger.info("Bus with id " + id + " requested");
         if (bus != null) {
             return ResponseEntity.ok(bus);
         } else {
