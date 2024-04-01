@@ -22,7 +22,6 @@ public class CurrencyControllerTestIT {
     @Autowired
     private TestRestTemplate restTemplate;
 
-
     @Test
     public void whenDoExchange_thenGetResponse() {
         ResponseEntity<String> response = restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD", String.class);

@@ -53,12 +53,12 @@ public class TicketController {
     @PostMapping("/buy")
     public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket) {
 
-        logger.info("Ticket purchase requested");
-        
+        logger.info("Ticket purchase requested for trip " + ticket.getTripID() + " and seat " + ticket.getSeatNumber());
+    
 
         if (!tripService.tripExists(ticket.getTripID())) {
             logger.info("Couldnt find trip with id " + ticket.getTripID());
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
         if (!ticketFieldValidator.validateEmail(ticket.getEmail()) || !ticketFieldValidator.validatePhone(ticket.getPhone())) {
@@ -70,10 +70,14 @@ public class TicketController {
 
         if (trip == null) {
 
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
         int givenSeat_index = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber() ;
+
+        if (givenSeat_index < 0 || givenSeat_index >= trip.getSeats().size()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
+        }
 
         ticket.setSeatNumber(givenSeat_index+1);
 
@@ -81,7 +85,7 @@ public class TicketController {
 
         if (tripBus == null) {
             logger.info("Couldnt find bus with id " + trip.getBusID());
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Bus not found");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bus not found");
         }
 
         int lastTicketOfBus = trip.getSeats().get(0).getNumber()+trip.getSeats().size();
@@ -89,7 +93,6 @@ public class TicketController {
 
         if (givenSeat > lastTicketOfBus
                 || ticket.getSeatNumber() < 0) {
-            logger.info("Invalid seat number on ticket purchase " + ticket.getId());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
         }
 
