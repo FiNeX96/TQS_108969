@@ -1,7 +1,6 @@
 package tqs.deti.controllerTests;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import tqs.deti.services.CurrencyExchangeService;
@@ -12,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import tqs.deti.controllers.CurrencyController;
 
-import org.junit.jupiter.api.BeforeAll;
+
 import static org.mockito.Mockito.when;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;

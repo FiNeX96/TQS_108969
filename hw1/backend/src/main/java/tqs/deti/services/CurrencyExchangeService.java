@@ -22,6 +22,15 @@ public class CurrencyExchangeService {
     Map<String, Object> cachedRates = new HashMap<String, Object>();
     private int cacheTTL = 3600 * 1000; // 1 hour
     private long lastCaching = 0;
+    private String apiKey = "9a42f01a628d9752376f4eaf";
+
+    public CurrencyExchangeService() {
+    }
+
+    public CurrencyExchangeService(int ttl) {
+        cacheTTL = ttl;
+        cachedRates = new HashMap<String, Object>();
+    }
 
     public boolean cacheExchangeRates(Map<String, Object> rates) {
         cachedRates = rates;
@@ -77,21 +86,10 @@ public class CurrencyExchangeService {
             logger.info("Cache is not valid, redoing exchange rates request");
         }
 
-        URL url = new URL("https://v6.exchangerate-api.com/v6/9a42f01a628d9752376f4eaf/latest/" + from);
 
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        String api_link = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
 
-        con.setRequestMethod("GET");
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-        in.close();
-        con.disconnect();
+        String content = doRequest(api_link);
 
         JSONObject obj = new JSONObject(content.toString());
 
@@ -109,6 +107,28 @@ public class CurrencyExchangeService {
 
         return rate;
 
+    }
+
+
+    public String doRequest(String link) throws Exception {
+
+        URL url = new URL(link);
+
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        con.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder content = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            content.append(inputLine);
+        }
+        in.close();
+        con.disconnect();
+
+        return content.toString();
     }
 
 }

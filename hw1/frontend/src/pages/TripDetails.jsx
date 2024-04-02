@@ -195,7 +195,7 @@ function TripDetails() {
                   {selectedCurrency}
                 </button>
               ) : (
-                <button className="btn btn-error px-4 py-2 rounded-md">
+                <button className="btn btn-error px-4 py-2 rounded-md disabled" >
                   Seat Taken
                 </button>
               )}

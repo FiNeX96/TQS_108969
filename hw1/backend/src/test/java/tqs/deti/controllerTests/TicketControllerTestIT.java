@@ -1,14 +1,12 @@
 package tqs.deti.controllerTests;
 
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 import tqs.deti.repositories.TicketRepository;
-import tqs.deti.repositoryTests.tripRepoTest;
 import tqs.deti.models.Bus;
 import tqs.deti.models.Seat;
 import tqs.deti.models.Ticket;
@@ -20,12 +18,12 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.profiles.active=test")
 @AutoConfigureTestDatabase
