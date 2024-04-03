@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Set;
 import java.util.HashMap;
@@ -18,14 +19,16 @@ public class CurrencyExchangeService {
 
     private static final Logger logger = LoggerFactory.getLogger(CurrencyExchangeService.class);
 
+
     private Set<String> currencies;
     Map<String, Object> cachedRates = new HashMap<String, Object>();
     private int cacheTTL = 3600 * 1000; // 1 hour
     private long lastCaching = 0;
     private String apiKey = "9a42f01a628d9752376f4eaf";
 
-    public CurrencyExchangeService() {
-    }
+    @Autowired
+    public CurrencyExchangeService () {}
+
 
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;

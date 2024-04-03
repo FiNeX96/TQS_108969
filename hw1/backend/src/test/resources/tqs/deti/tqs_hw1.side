@@ -1,0 +1,629 @@
+{
+  "id": "457d792c-3cd7-43f6-a4bf-1b6c58937176",
+  "version": "2.0",
+  "name": "tqs_hw1",
+  "url": "http://localhost:5173",
+  "tests": [{
+    "id": "70743c1c-0344-4e76-b7b8-974b1211e38e",
+    "name": "buyticket",
+    "commands": [{
+      "id": "3fcc28d4-707c-47d1-9ee3-4dc35bc9220f",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f078189-bd33-47c3-b21b-3d04fdacd6da",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a8b4cfec-2ad2-401e-80f2-91ac0e2ef969",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search for Trips')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f08fc661-628c-47d6-ac7d-2811716091f7",
+      "comment": "",
+      "command": "click",
+      "target": "css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)",
+      "targets": [
+        ["css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2674a7c0-f9e2-4b47-85f2-4e7c4f10bfd4",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(9)",
+      "targets": [
+        ["css=.btn:nth-child(9)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/button[9]", "xpath:idRelative"],
+        ["xpath=//button[9]", "xpath:position"],
+        ["xpath=//button[contains(.,'9 - normal')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4392d4ac-7462-4a9f-aa57-914e7b3a68da",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "694.3999938964844,265.1999816894531"
+    }, {
+      "id": "727a8658-074d-4d0b-b417-8cc2ede28674",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "694.3999938964844,265.1999816894531"
+    }, {
+      "id": "ccf22bf0-afeb-4853-9331-d3657a822462",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "694.3999938964844,265.1999816894531"
+    }, {
+      "id": "80dbaf9d-6d44-4229-a150-05d79223df8a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a5919d68-2853-43dc-93d3-5a611b4f9fd3",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d7137ff5-e418-4f12-b12f-c0b24f910e45",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": "Buy Ticket - 10.00 EUR"
+    }, {
+      "id": "d9d1a0ab-1e28-4311-b1ab-f4d01d6727f6",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "827a853e-4d72-41a2-8c6f-0bc3a334245b",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Ze Alfredo"
+    }, {
+      "id": "87ae0543-f734-4d98-9ec2-a90a03c75ada",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "48e014d7-ac75-433d-b5d9-9ed0abb4e9d9",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "918888888"
+    }, {
+      "id": "7b7e2493-5111-46ea-a13c-de7b5b9f9251",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "baea5d1b-4c84-4ff3-b84a-bee82f37297f",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "zealfredo@gmail.com"
+    }, {
+      "id": "40afb3ba-8342-4889-acb8-368c0e50474f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "02363594-e984-4a3a-8022-695313f5a997",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dcaa8ad4-4ed9-4d08-96d4-2c691a2a5749",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2c3c15b-c14b-4334-87e3-c62f0150ed91",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-2xl",
+      "targets": [
+        ["css=.text-2xl", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/p", "xpath:idRelative"],
+        ["xpath=//div[3]/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Ticket bought successfully. Your ticket ID is 114741bb-d12b-40f0-b9e6-991a66cf4476')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe9058a4-dae7-414e-a753-8e2987bc67c9",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.btn-info",
+      "targets": [
+        ["css=.btn-info", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Buy Ticket - 10.00 EUR')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ba211f6a-1392-4d7c-9323-6acbd5ae5d52",
+      "comment": "",
+      "command": "click",
+      "target": "css=.text-2xl",
+      "targets": [
+        ["css=.text-2xl", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[3]/p", "xpath:idRelative"],
+        ["xpath=//div[3]/p", "xpath:position"],
+        ["xpath=//p[contains(.,'Ticket bought successfully. Your ticket ID is 114741bb-d12b-40f0-b9e6-991a66cf4476')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "7714ff61-75c0-4cbb-b8ed-59eba49ce651",
+    "name": "buyticketnotavailable",
+    "commands": [{
+      "id": "0af64efe-3c99-4d00-93c8-af6a3c80b908",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "39b6d49f-8aca-49ac-b9ff-f0eeda5b8450",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "126c0352-24da-4438-9261-5c0915907c25",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search for Trips')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c38ef919-8f35-4041-b6d0-ffc4c84bb3d4",
+      "comment": "",
+      "command": "waitForElementVisible",
+      "target": "css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)",
+      "targets": [
+        ["css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": "5000"
+    }, {
+      "id": "40143cba-e072-41f7-a454-98fe9c99b9ca",
+      "comment": "",
+      "command": "click",
+      "target": "css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)",
+      "targets": [
+        ["css=.items-center:nth-child(1) > .w-1\\/4:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b7432554-bcc5-45b6-bf26-38976b55c7a8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-error",
+      "targets": [
+        ["css=.btn-error", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div/button[9]", "xpath:idRelative"],
+        ["xpath=//button[9]", "xpath:position"],
+        ["xpath=//button[contains(.,'9 - normal')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cda4a7cd-3ccf-4432-9045-e172bfb27207",
+      "comment": "",
+      "command": "runScript",
+      "target": "window.scrollTo(0,200)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aefc6171-25da-411e-92e3-dba420d79caa",
+      "comment": "",
+      "command": "mouseDownAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "680.3999938964844,270.1999816894531"
+    }, {
+      "id": "588b0a33-e480-40fb-9352-d033a505b57e",
+      "comment": "",
+      "command": "mouseMoveAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "680.3999938964844,270.1999816894531"
+    }, {
+      "id": "c417158d-3c72-468a-b976-80eb6e0a5d4c",
+      "comment": "",
+      "command": "mouseUpAt",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": "680.3999938964844,270.1999816894531"
+    }, {
+      "id": "ba90689a-5fa4-4601-8134-d3a4a5eb1f33",
+      "comment": "",
+      "command": "click",
+      "target": "css=.pt-20",
+      "targets": [
+        ["css=.pt-20", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "106f9a0b-7c41-496e-832c-91ad6e5fa307",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.px-4",
+      "targets": [
+        ["css=.px-4", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Seat Taken')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f7640af-64c0-4864-8d73-6fbd7be4c757",
+      "comment": "",
+      "command": "click",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f91102f3-d31d-420d-aa90-0eb65a859dfb",
+      "comment": "",
+      "command": "type",
+      "target": "id=name",
+      "targets": [
+        ["id=name", "id"],
+        ["name=name", "name"],
+        ["css=#name", "css:finder"],
+        ["xpath=//input[@id='name']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Zé Alfredo"
+    }, {
+      "id": "19af8f33-b211-4e96-8635-e54b23328424",
+      "comment": "",
+      "command": "click",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f2eacc88-4572-43e5-b414-121e3c9a2c29",
+      "comment": "",
+      "command": "type",
+      "target": "id=phone",
+      "targets": [
+        ["id=phone", "id"],
+        ["name=phone", "name"],
+        ["css=#phone", "css:finder"],
+        ["xpath=//input[@id='phone']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "918888888"
+    }, {
+      "id": "af46b138-1bae-4cba-8b61-3c2859883cdb",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b54ea3f-52cb-42f1-91a6-f05c2211b1c7",
+      "comment": "",
+      "command": "type",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["name=email", "name"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": "zealfredo@gmail.com"
+    }, {
+      "id": "085f42f8-2727-4629-a194-10ae1d0cfcba",
+      "comment": "",
+      "command": "click",
+      "target": "css=.px-4",
+      "targets": [
+        ["css=.px-4", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Seat Taken')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ccc64a28-b5fa-4943-882a-d6e0d0357b27",
+      "comment": "",
+      "command": "verifyValue",
+      "target": "css=.px-4",
+      "targets": [
+        ["css=.px-4", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/button", "xpath:idRelative"],
+        ["xpath=//body/div/div/div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Seat Taken')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "8aac7120-62c7-4d22-98d7-90b5f3493ec5",
+    "name": "filtertrips",
+    "commands": [{
+      "id": "1042c332-1645-4d99-b68a-33db049a4399",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "91a7fca8-fd6c-4707-8637-0bb22d6d04d0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "844x824",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "07617d20-ab59-4e9e-8a4b-cb857cd3fe29",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn:nth-child(2)",
+      "targets": [
+        ["css=.btn:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Search for Trips')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b0cd47b-8e29-43c5-af9c-ec7245812fbb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.select:nth-child(2)",
+      "targets": [
+        ["css=.select:nth-child(2)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "82572ba3-bf23-485e-bbfc-74d5e6ed367c",
+      "comment": "",
+      "command": "select",
+      "target": "css=.select:nth-child(2)",
+      "targets": [],
+      "value": "label=Porto"
+    }, {
+      "id": "b854f692-cc03-420a-8392-61bc457dd6ee",
+      "comment": "",
+      "command": "click",
+      "target": "css=.select:nth-child(4)",
+      "targets": [
+        ["css=.select:nth-child(4)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/select[2]", "xpath:idRelative"],
+        ["xpath=//select[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9827dd83-7da8-4610-91ea-bbbc0332afc3",
+      "comment": "",
+      "command": "select",
+      "target": "css=.select:nth-child(4)",
+      "targets": [],
+      "value": "label=Lisboa"
+    }, {
+      "id": "83a05687-c033-455b-a79f-cb0dd0cc4d75",
+      "comment": "",
+      "command": "click",
+      "target": "css=.items-center > .w-1\\/4:nth-child(3)",
+      "targets": [
+        ["css=.items-center > .w-1\\/4:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div[2]/div[2]/div/div[3]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f3fa1e2-a459-4b2e-be5f-e9f78395bfeb",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container",
+      "targets": [
+        ["css=.container", "css:finder"],
+        ["xpath=//div[@id='root']/div", "xpath:idRelative"],
+        ["xpath=//div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0a69b345-30dc-4070-81c8-77ce8d1c8b75",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=.text-left",
+      "targets": [
+        ["css=.text-left", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/div/span", "xpath:idRelative"],
+        ["xpath=//span", "xpath:position"],
+        ["xpath=//span[contains(.,'Trip details for trip 3')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "74b75ba6-480a-48bb-94ce-338dfc8c87be",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:5173/"],
+  "plugins": []
+}
