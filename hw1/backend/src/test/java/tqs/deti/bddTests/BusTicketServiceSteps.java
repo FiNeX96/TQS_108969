@@ -1,35 +1,26 @@
 package tqs.deti.bddTests;
 
-import static java.lang.invoke.MethodHandles.lookup;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.slf4j.LoggerFactory.getLogger;
 
-import org.slf4j.Logger;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import java.time.Duration;
-import java.util.List;
+
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
-import io.github.bonigarcia.seljup.DockerBrowser;
+
 import io.github.bonigarcia.seljup.SeleniumJupiter;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
+
+
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-
-import static io.github.bonigarcia.seljup.BrowserType.CHROME;
-
 
 @ExtendWith(SeleniumJupiter.class)
 public class BusTicketServiceSteps {
