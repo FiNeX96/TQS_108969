@@ -26,7 +26,7 @@ public class CurrencyController {
 
 
     @GetMapping("/list")
-    public ResponseEntity<Set<String>> listCurrencies() {
+    public ResponseEntity<Set<String>> listCurrencies() throws Exception {
         logger.info("List of currencies requested");
         return ResponseEntity.ok(currencyExchangeService.listCurrencies());
     }

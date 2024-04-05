@@ -19,7 +19,6 @@ public class CurrencyExchangeService {
 
     private static final Logger logger = LoggerFactory.getLogger(CurrencyExchangeService.class);
 
-
     private Set<String> currencies;
     Map<String, Object> cachedRates = new HashMap<String, Object>();
     private int cacheTTL = 3600 * 1000; // 1 hour
@@ -27,8 +26,8 @@ public class CurrencyExchangeService {
     private String apiKey = "9a42f01a628d9752376f4eaf";
 
     @Autowired
-    public CurrencyExchangeService () {}
-
+    public CurrencyExchangeService() {
+    }
 
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;
@@ -38,7 +37,7 @@ public class CurrencyExchangeService {
     public boolean cacheExchangeRates(Map<String, Object> rates) {
         cachedRates = rates;
         lastCaching = System.currentTimeMillis();
-        logger.info("Caching exchange rates at " + lastCaching + " for " + cacheTTL + " milliseconds" );
+        logger.info("Caching exchange rates at " + lastCaching + " for " + cacheTTL + " milliseconds");
         return true;
     }
 
@@ -60,35 +59,24 @@ public class CurrencyExchangeService {
 
     }
 
-    public Set<String> listCurrencies() {
+    public Set<String> listCurrencies() throws Exception {
         logger.info("List of currencies requested");
-        if (currencies == null) {
-            try {
-                exchange("EUR", "USD");
-            } catch (Exception e) {
-
-            }
-        }
+        if (currencies == null)
+            exchange("EUR", "USD");
         return currencies;
     }
 
     public double exchange(String from, String to) throws Exception {
 
         if (isCacheValid()) {
-            try {
-                Double rate = Double.parseDouble(cachedRates.get(to).toString());
-                logger.info("Cache hit, returning exchange rate");
-                return rate;
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new Exception("Currency not found");
-            }
 
-        }
-        else{
+            Double rate = Double.parseDouble(cachedRates.get(to).toString());
+            logger.info("Cache hit, returning exchange rate");
+            return rate;
+
+        } else {
             logger.info("Cache is not valid, redoing exchange rates request");
         }
-
 
         String api_link = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
 
@@ -111,7 +99,6 @@ public class CurrencyExchangeService {
         return rate;
 
     }
-
 
     public String doRequest(String link) throws Exception {
 

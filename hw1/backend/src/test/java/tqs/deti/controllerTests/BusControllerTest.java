@@ -79,4 +79,13 @@ public class BusControllerTest {
 
     }
 
+    @Test 
+    void whenNoBus_thenGetBus() throws Exception {
+
+        mvc.perform(get("/bus/get?id=32")
+                .contentType("application/json"))
+                .andExpect(status().isNotFound());
+
+    }
+
 }

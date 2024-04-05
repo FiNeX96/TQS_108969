@@ -54,14 +54,14 @@ public class TicketController {
     public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket) {
 
         logger.info("Ticket purchase requested for trip " + ticket.getTripID() + " and seat " + ticket.getSeatNumber());
-    
 
         if (!tripService.tripExists(ticket.getTripID())) {
             logger.info("Couldnt find trip with id " + ticket.getTripID());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
-        if (!ticketFieldValidator.validateEmail(ticket.getEmail()) || !ticketFieldValidator.validatePhone(ticket.getPhone())) {
+        if (!ticketFieldValidator.validateEmail(ticket.getEmail())
+                || !ticketFieldValidator.validatePhone(ticket.getPhone())) {
             logger.info("Failed to validate email and/or phone on ticket purchase " + ticket.getId());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid email or phone number");
         }
@@ -73,22 +73,17 @@ public class TicketController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
-        int givenSeat_index = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber() ;
+        int givenSeat_index = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber();
 
         if (givenSeat_index < 0 || givenSeat_index >= trip.getSeats().size()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
         }
 
-        ticket.setSeatNumber(givenSeat_index+1);
+        ticket.setSeatNumber(givenSeat_index + 1);
 
         Bus tripBus = busService.getBus(trip.getBusID());
 
-        if (tripBus == null) {
-            logger.info("Couldnt find bus with id " + trip.getBusID());
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bus not found");
-        }
-
-        int lastTicketOfBus = trip.getSeats().get(0).getNumber()+trip.getSeats().size();
+        int lastTicketOfBus = trip.getSeats().get(0).getNumber() + trip.getSeats().size();
         int givenSeat = ticket.getSeatNumber();
 
         if (givenSeat > lastTicketOfBus
@@ -121,13 +116,7 @@ public class TicketController {
 
         Ticket t = ticketService.buyTicket(ticket);
 
-        if (t != null) {
-            return ResponseEntity.ok(t);
-        } else {
-            logger.info("Failed to buy ticket " + ticket.getId());
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error buying ticket");
-
-        }
+        return ResponseEntity.ok(t);
 
     }
 
@@ -142,7 +131,7 @@ public class TicketController {
 
         for (Ticket t : tickets) {
             TicketData td = new TicketData();
-            td.setId(t.getId());;
+            td.setId(t.getId());
             td.setTripID(t.getTripID());
             td.setSeatNumber(t.getSeatNumber());
             td.setName(t.getName());

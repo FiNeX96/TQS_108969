@@ -3,6 +3,7 @@ package tqs.deti.unitTests;
 
 
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 import tqs.deti.services.CurrencyExchangeService;
@@ -36,7 +37,14 @@ public class cacheTest {
         
         assert (currencyExchangeService.isCacheValid());
 
-        
     }
+
+    public void testListCurrencies() throws Exception  {
+
+        assertThat(currencyExchangeService.listCurrencies())
+        .contains("EUR","USD");
+
+    }
+
 
 }

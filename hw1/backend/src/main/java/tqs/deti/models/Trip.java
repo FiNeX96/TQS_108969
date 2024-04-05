@@ -2,13 +2,10 @@ package tqs.deti.models;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import jakarta.persistence.CascadeType;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
@@ -18,9 +15,7 @@ import jakarta.persistence.GenerationType;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "trips")
 public class Trip {

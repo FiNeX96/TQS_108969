@@ -209,6 +209,7 @@ public class TicketControllerTestIT {
 
 
 
+
     /*
      * I see no need for this test, seats are checked if they are taken 1 by 1, if
      * bus is full then all seats are taken, and it will give a bad request

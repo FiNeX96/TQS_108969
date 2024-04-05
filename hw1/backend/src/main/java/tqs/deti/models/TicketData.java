@@ -2,11 +2,10 @@ package tqs.deti.models;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Getter
 @Setter
-@ToString
 public class TicketData {
     private String id;
     private String price; // account for currency changes

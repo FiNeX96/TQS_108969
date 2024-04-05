@@ -7,14 +7,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "tickets")
 public class Ticket {
