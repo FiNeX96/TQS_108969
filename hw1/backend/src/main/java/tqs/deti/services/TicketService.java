@@ -31,12 +31,12 @@ public class TicketService {
     }
 
     public boolean seatAvailableForTrip(int tripID, int seatID) {
-        logger.info(String.format("Checking if seat %d is available for trip %d", seatID, tripID));
+        logger.info("Checking if seat %d is available for trip %d", seatID, tripID);
         return ticketRepository.findBySeatNumberAndTripID(seatID, tripID) != null;
     }
 
     public List<Ticket> findTicketsByID(int tripID) {
-        logger.info(String.format("Finding tickets for trip %d", tripID));
+        logger.info("Finding tickets for trip %d", tripID);
         return ticketRepository.findByTripID(tripID);
     }
 
@@ -59,13 +59,12 @@ public class TicketService {
 
             ticketRepository.save(ticket);
 
-            logger.info(String.format("Ticket purchased with id %d", ticket.getId()));
+            logger.info("Ticket purchased with id %d", ticket.getId());
 
             return ticket;
 
         } catch (Exception e) {
-
-            logger.info(String.format("Error purchasing ticket with id %s", e.getMessage()));
+            logger.info("Error purchasing ticket: %s", e.getMessage());
             return null;
         }
 
