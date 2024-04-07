@@ -3,7 +3,6 @@ package tqs.deti.services;
 import tqs.deti.models.Trip;
 import tqs.deti.repositories.TripRepository;
 import java.util.List;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,12 +15,9 @@ public class TripService {
 
     private static final Logger logger = LoggerFactory.getLogger(TripService.class);
     
-
-    
     private TripRepository tripsRepository;
 
-    
-    CurrencyExchangeService currencyExchangeService;
+    private CurrencyExchangeService currencyExchangeService;
 
     @Autowired
     public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService) {

@@ -26,12 +26,13 @@ public class CurrencyExchangeService {
     private long lastCaching = 0;
     private String apiKey = "9a42f01a628d9752376f4eaf";
 
-    @Autowired
-    public CurrencyExchangeService() {
-    }
-
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;
+        cachedRates = new HashMap<>();
+    }
+
+    @Autowired
+    public CurrencyExchangeService() {
         cachedRates = new HashMap<>();
     }
 

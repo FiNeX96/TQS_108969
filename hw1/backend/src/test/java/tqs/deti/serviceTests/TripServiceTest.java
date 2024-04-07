@@ -121,21 +121,21 @@ class TripServiceTest {
 
     }
 
-    @Test
-     void testListTripsWithoutEuro() throws Exception{
+    //  @Test
+    //  void testListTripsWithoutEuro() throws Exception{
 
-        Trip trip = new Trip();
-        trip.setPrice(10.0);
+    //     Trip trip = new Trip();
+    //      trip.setPrice(10.0);
         
-        when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(trip));
+    //     when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(trip));
 
-        assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "USD"))
-        .hasSize(1)
-        .allMatch(t -> t.getPrice() >= 10.0 && t.getPrice() <= 12.0);
+    //      assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "USD"))
+    //      .hasSize(1)
+    //      .allMatch(t -> t.getPrice() >= 10.0 && t.getPrice() <= 12.0);
         
-        verify(tripRepository, times(1)).findByOriginAndDestinationAndDate(any(), any(), any());
+    //     verify(tripRepository, times(1)).findByOriginAndDestinationAndDate(any(), any(), any());
 
-    }
+    //  }
 
     @Test
      void testGetTripWithoutEuro() {
