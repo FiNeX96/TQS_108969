@@ -25,6 +25,7 @@ public class CurrencyExchangeService {
     private int cacheTTL = 3600 * 1000; // 1 hour
     private long lastCaching = 0;
     private String apiKey = "9a42f01a628d9752376f4eaf";
+    private String exchangeRates = "conversion_rates";
 
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;
@@ -96,14 +97,14 @@ public class CurrencyExchangeService {
 
         JSONObject obj = new JSONObject(content);
 
-        cacheExchangeRates(obj.getJSONObject("conversion_rates").toMap());
+        cacheExchangeRates(obj.getJSONObject(exchangeRates).toMap());
 
-        currencies = obj.getJSONObject("conversion_rates").keySet();
+        currencies = obj.getJSONObject(exchangeRates).keySet();
 
         double rate;
 
         try {
-            rate = obj.getJSONObject("conversion_rates").getDouble(to);
+            rate = obj.getJSONObject(exchangeRates).getDouble(to);
         } catch (Exception e) {
             throw new Exception("Currency not found");
         }

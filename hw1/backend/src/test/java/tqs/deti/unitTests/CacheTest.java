@@ -22,7 +22,7 @@ import tqs.deti.services.CurrencyExchangeService;
         assert (currencyExchangeService.isCacheValid());
 
         Thread.sleep(6000);
-        assert (!currencyExchangeService.isCacheValid());
+        assertThat(!currencyExchangeService.isCacheValid());
 
 
     }
@@ -35,7 +35,7 @@ import tqs.deti.services.CurrencyExchangeService;
 
         Thread.sleep(4000);
         
-        assert (currencyExchangeService.isCacheValid());
+        assertThat(currencyExchangeService.isCacheValid());
 
     }
 
