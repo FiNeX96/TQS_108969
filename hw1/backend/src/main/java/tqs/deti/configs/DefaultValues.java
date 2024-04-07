@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
@@ -17,7 +18,9 @@ import tqs.deti.models.Trip;
 import tqs.deti.repositories.BusRepository;
 import tqs.deti.repositories.TripRepository;
 
+
 @Component
+@Generated
 @ConditionalOnProperty(name = "spring.profiles.active", havingValue = "dev")
 public class DefaultValues implements ApplicationRunner {
 
