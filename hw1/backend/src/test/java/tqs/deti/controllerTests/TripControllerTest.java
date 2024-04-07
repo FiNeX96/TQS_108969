@@ -28,7 +28,7 @@ public class TripControllerTest {
     private TripService tripService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         
         when(tripService.getDates()).thenReturn(List.of("2021-05-01", "2021-05-02", "2021-05-03"));
         when(tripService.getOrigins()).thenReturn(List.of("Aveiro", "Porto", "Lisboa"));

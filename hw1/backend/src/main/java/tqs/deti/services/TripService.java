@@ -55,7 +55,7 @@ public class TripService {
         return tripsRepository.findAll();
     }
 
-    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency) {
+    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency) throws Exception {
 
         List<Trip> trips = new ArrayList<Trip>();
         trips = tripsRepository.findByOriginAndDestinationAndDate(origin, destination, date);
@@ -66,10 +66,9 @@ public class TripService {
 
         double exchange_rate = 1.0;
 
-        try {
-            exchange_rate = currencyExchangeService.exchange("EUR", currency);
-        } catch (Exception e) {
-        }
+        
+        exchange_rate = currencyExchangeService.exchange("EUR", currency);
+
 
         for (Trip trip : trips) {
             trip.setPrice(trip.getPrice() * exchange_rate);
