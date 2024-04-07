@@ -61,16 +61,16 @@ public class TicketController {
     @PostMapping("/buy")
     public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket) {
 
-        logger.info("Ticket purchase requested for trip " + ticket.getTripID() + " and seat " + ticket.getSeatNumber());
+        logger.info(String.format("Ticket purchase requested for trip %d and seat %d", ticket.getTripID(), ticket.getSeatNumber()));
 
         if (!tripService.tripExists(ticket.getTripID())) {
-            logger.info("Couldnt find trip with id " + ticket.getTripID());
+            logger.info(String.format("Trip with id %d requested", ticket.getTripID()));
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
         if (!ticketFieldValidator.validateEmail(ticket.getEmail())
                 || !ticketFieldValidator.validatePhone(ticket.getPhone())) {
-            logger.info("Failed to validate email and/or phone on ticket purchase " + ticket.getId());
+            logger.info(String.format("Failed to validate email and/or phone on ticket purchase %d", ticket.getId()));
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid email or phone number");
         }
 
@@ -104,7 +104,7 @@ public class TicketController {
         Seat seat = seats.get(givenSeatIndex);
 
         if (seat.isTaken()) {
-            logger.info("Seat already taken on ticket purchase " + ticket.getId());
+            logger.info(String.format("Seat already taken on ticket purchase %d", ticket.getId()));
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Seat already occupied");
         }
 
@@ -118,7 +118,7 @@ public class TicketController {
         }
 
         if (seatsTaken >= tripBus.getTotalSeats()) {
-            logger.info("Bus full on ticket purchase " + ticket.getId());
+            logger.info(String.format("Bus full on ticket purchase %d", ticket.getId()));
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bus full");
         }
 

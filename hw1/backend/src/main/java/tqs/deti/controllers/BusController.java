@@ -41,7 +41,7 @@ public class BusController {
     @GetMapping("/get")
     public ResponseEntity<Bus> getBus(@RequestParam int id) {
         Bus bus = busService.getBus(id);
-        logger.info("Bus with id %s requested", id);
+        logger.info(String.format("Bus with id %d requested", id));
         if (bus != null) {
             return ResponseEntity.ok(bus);
         } else {
@@ -59,7 +59,7 @@ public class BusController {
     @PostMapping("/add")
     public ResponseEntity<Bus> addBus(@RequestBody Bus bus) {
         Bus bus2 = busService.addBus(bus);
-        logger.info("Bus " + bus2.getName() + " added");
+        logger.info(String.format("Bus with id %d added", bus2.getId()));
         return ResponseEntity.ok(bus2);
     }
     
