@@ -154,39 +154,6 @@ public class DefaultValues implements ApplicationRunner {
         tripRepository.save(trip3);
         tripRepository.save(trip4);
 
-        // Create additional buses for trips 5 to 10
-        Bus bus5 = new Bus();
-        bus5.setTotalSeats(50);
-        bus5.setName("Ganda Autocarro 5");
-        int bus5ID = busRepository.save(bus5).getId();
-
-        Bus bus6 = new Bus();
-        bus6.setTotalSeats(45);
-        bus6.setName("Ganda Autocarro 6");
-        int bus6ID = busRepository.save(bus6).getId();
-
-        // Create trips 5 to 10
-        for (int tripNumber = 5; tripNumber <= 10; tripNumber++) {
-            Trip trip = new Trip();
-            trip.setOrigin("Origin " + tripNumber);
-            trip.setDestination("Destination " + tripNumber);
-            trip.setBusID(tripNumber % 2 == 0 ? bus6ID : bus5ID); // Alternate buses
-            trip.setPrice(10.0 * tripNumber);
-            trip.setDate("2021-03-" + (tripNumber + 1)); // Adjust date accordingly
-            trip.setTime("10:00");
-
-            ArrayList<Seat> seats = new ArrayList<>(bus5.getTotalSeats());
-            for (int i = 0; i < bus5.getTotalSeats(); i++) {
-                seats.add(new Seat()); // Create and add a new Seat object
-            }
-            // Mark seats 1 to 5 as premium for even trips, 6 to 13 for odd trips
-            for (int i = 1; i <= 5; i++) {
-                seats.get(i).setSeatType(tripNumber % 2 == 0 ? premium : "normal");
-            }
-            trip.setSeats(seats);
-
-            tripRepository.save(trip);
-        }
 
     }
 }
