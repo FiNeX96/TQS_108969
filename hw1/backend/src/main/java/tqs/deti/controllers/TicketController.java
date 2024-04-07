@@ -40,8 +40,6 @@ public class TicketController {
     
     private TicketService ticketService;
 
-    
-    private BusService busService;
 
     
     private TripService tripService;
@@ -53,7 +51,6 @@ public class TicketController {
     public TicketController(TicketService ticketService, BusService busService, TripService tripService,
             TicketFieldValidator ticketFieldValidator) {
         this.ticketService = ticketService;
-        this.busService = busService;
         this.tripService = tripService;
         this.ticketFieldValidator = ticketFieldValidator;
     }
@@ -83,21 +80,8 @@ public class TicketController {
 
         int givenSeatIndex = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber();
 
-        if (givenSeatIndex < 0 || givenSeatIndex >= trip.getSeats().size()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
-        }
 
         ticket.setSeatNumber(givenSeatIndex + 1);
-
-        Bus tripBus = busService.getBus(trip.getBusID());
-
-        int lastTicketOfBus = trip.getSeats().get(0).getNumber() + trip.getSeats().size();
-        int givenSeat = ticket.getSeatNumber();
-
-        if (givenSeat > lastTicketOfBus
-                || ticket.getSeatNumber() < 0) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
-        }
 
         List<Seat> seats = trip.getSeats();
 
@@ -108,19 +92,6 @@ public class TicketController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Seat already occupied");
         }
 
-        // count number of seats taken
-
-        int seatsTaken = 0;
-        for (Seat s : seats) {
-            if (s.isTaken()) {
-                seatsTaken++;
-            }
-        }
-
-        if (seatsTaken >= tripBus.getTotalSeats()) {
-            logger.info("Bus full on ticket purchase {}" , ticket.getId());
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bus full");
-        }
 
         Ticket t = ticketService.buyTicket(ticket);
 

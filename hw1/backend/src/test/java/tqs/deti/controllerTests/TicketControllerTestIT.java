@@ -210,37 +210,4 @@ class TicketControllerTestIT {
 
 
 
-    /*
-     * I see no need for this test, seats are checked if they are taken 1 by 1, if
-     * bus is full then all seats are taken, and it will give a bad request
-     * 
-     * @Test
-     * void whenBusFull_thenGiveError() {
-     * Ticket ticket6 = new Ticket();
-     * Ticket ticket5 = new Ticket();
-     * ticket5.setEmail("albertojoaquim@ua.pt");
-     * ticket5.setPhone(123456789);
-     * ticket5.setPrice("15USD");
-     * ticket5.setSeatNumber(trip2.getSeats().get(0).getNumber());
-     * ticket5.setTripID(trip2.getId());
-     * 
-     * ResponseEntity<Ticket> response = restTemplate.postForEntity("/tickets/buy",
-     * ticket5, Ticket.class);
-     * 
-     * assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-     * 
-     * ticket6.setEmail("manel@ua.pt");
-     * ticket6.setPhone(123456789);
-     * ticket6.setPrice("15USD");
-     * ticket6.setSeatNumber(trip2.getSeats().get(1).getNumber());
-     * ticket6.setTripID(trip2.getId());
-     * 
-     * ResponseEntity<Ticket> response2 = restTemplate.postForEntity("/tickets/buy",
-     * ticket6, Ticket.class);
-     * 
-     * assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-     * 
-     * }
-     */
-
 }
