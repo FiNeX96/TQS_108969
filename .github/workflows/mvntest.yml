@@ -21,9 +21,9 @@ jobs:
         java-version: '17'
 
     - name: Build and run unit tests with Maven
-      run: mvn test
+      run: cd hw1/backend && mvn test
       continue-on-error: false
 
     - name: Run integration tests with Maven
-      run: mvn failsafe:integration-test
+      run: cd hw1/backend && mvn failsafe:integration-test
       continue-on-error: false
