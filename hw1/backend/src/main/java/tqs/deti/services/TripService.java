@@ -40,7 +40,7 @@ public class TripService {
         double exchangeRate = 1.0;
 
         try {
-            System.out.println("Exchanging currency from EUR to " + currency);
+            logger.info(String.format("Exchanging currency from EUR to %s", currency));
             exchangeRate = currencyExchangeService.exchange("EUR", currency);
         } catch (Exception e) {
             logger.error("Error exchanging currency: %s", e.getMessage());
