@@ -76,25 +76,20 @@ public class CurrencyExchangeService {
             logger.info("Cache is not valid, redoing exchange rates request");
         }
 
-        List<String> allowedHosts = List.of("https://v6.exchangerate-api.com/v6/");
 
         String baseApiUrl = "https://v6.exchangerate-api.com/v6/";
+
+        List<String> allowedFrom = List.of("EUR", "USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK",
+                "CHF", "ISK", "NOK", "HRK", "RUB", "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW",
+                "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR");
+
+        if (!allowedFrom.contains(from)) {
+            throw new Exception("Invalid currency");
+        }
         
         String apiLink = baseApiUrl + apiKey + "/latest/" + from;
         
-        boolean isValid = false;
-
-        for (String host : allowedHosts) {
-            if (apiLink.startsWith(host)) {
-                isValid = true;
-                break;
-            }
-        }
-
-        if (!isValid) {
-            throw new Exception("Invalid API link");
-        }
-
+        
         URL url = new URL(apiLink);
 
 
