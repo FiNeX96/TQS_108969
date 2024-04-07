@@ -20,7 +20,7 @@ import tqs.deti.services.CurrencyExchangeService;
     void testResultAfterTTLExpire() throws Exception {
 
         currencyExchangeService.exchange("EUR", "USD");
-        assert (currencyExchangeService.isCacheValid());
+        assertThat(currencyExchangeService.isCacheValid()).isTrue();
 
         Thread.sleep(6000);
         assertThat(currencyExchangeService.isCacheValid()).isFalse();
@@ -32,7 +32,7 @@ import tqs.deti.services.CurrencyExchangeService;
      void testResultBeforeTTLExpire() throws Exception {
 
         currencyExchangeService.exchange("EUR", "USD");
-        assert (currencyExchangeService.isCacheValid());
+        assertThat(currencyExchangeService.isCacheValid()).isTrue();
 
         Thread.sleep(4000);
         

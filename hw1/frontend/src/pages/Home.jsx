@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <div className="space-y-6 space-x-6">
-      <h1>Bus Ticket Service </h1>
+      <h1> Confy Bus Trips </h1>
       <button className=" btn btn-success" onClick={goToTripPage}>
         {" "}
         Search for Trips{" "}

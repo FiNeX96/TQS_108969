@@ -3,7 +3,7 @@ name: Maven Test
 on:
   push:
     branches:
-      - main  # or whatever branch you want to trigger the workflow on
+      - main  
 
 jobs:
   build:
