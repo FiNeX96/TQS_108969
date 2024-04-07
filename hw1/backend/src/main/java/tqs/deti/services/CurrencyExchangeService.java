@@ -78,7 +78,9 @@ public class CurrencyExchangeService {
 
         List<String> allowedHosts = List.of("https://v6.exchangerate-api.com/v6/");
 
-        String apiLink = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
+        String baseApiUrl = "https://v6.exchangerate-api.com/v6/";
+        
+        String apiLink = baseApiUrl + apiKey + "/latest/" + from;
         
         boolean isValid = false;
 
@@ -94,6 +96,7 @@ public class CurrencyExchangeService {
         }
 
         URL url = new URL(apiLink);
+
 
         String content = doRequest(url);
 
