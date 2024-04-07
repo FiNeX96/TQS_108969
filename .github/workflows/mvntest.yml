@@ -1,0 +1,29 @@
+name: Maven Test
+
+on:
+  push:
+    branches:
+      - main  # or whatever branch you want to trigger the workflow on
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '17'
+
+    - name: Build and run unit tests with Maven
+      run: mvn test
+      continue-on-error: false
+
+    - name: Run integration tests with Maven
+      run: mvn failsafe:integration-test
+      continue-on-error: false
