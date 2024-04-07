@@ -2,6 +2,7 @@ package tqs.deti.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scripting.bsh.BshScriptUtils.BshExecutionException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +31,12 @@ public class BusController {
 
     private static final Logger logger = LoggerFactory.getLogger(BusController.class);
 
+    private final BusService busService;
+
     @Autowired
-    private BusService busService;
+    public BusController(BusService busService) {
+        this.busService = busService;
+    }
 
 
     @GetMapping("/get")

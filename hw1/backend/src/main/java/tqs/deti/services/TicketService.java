@@ -18,11 +18,17 @@ public class TicketService {
 
     private static final Logger logger = LoggerFactory.getLogger(TicketService.class);
 
-    @Autowired
+    
     private TicketRepository ticketRepository;
 
-    @Autowired
+    
     private TripRepository tripRepository;
+
+    @Autowired
+    public TicketService(TicketRepository ticketRepository, TripRepository tripRepository) {
+        this.ticketRepository = ticketRepository;
+        this.tripRepository = tripRepository;
+    }
 
     public boolean seatAvailableForTrip(int tripID, int seatID) {
         logger.info("Checking if seat " + seatID + " is available for trip " + tripID);

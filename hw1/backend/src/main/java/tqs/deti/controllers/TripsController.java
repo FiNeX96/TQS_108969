@@ -21,8 +21,13 @@ public class TripsController {
 
     private static final Logger logger = LoggerFactory.getLogger(TripsController.class);
 
-    @Autowired
+    
     private TripService tripService;
+
+    @Autowired
+    public TripsController(TripService tripService) {
+        this.tripService = tripService;
+    }
 
     @GetMapping("/list")
     public ResponseEntity<List<Trip>> listTrips(@RequestParam(required = false) String origin,

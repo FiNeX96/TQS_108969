@@ -17,11 +17,17 @@ public class TripService {
     private static final Logger logger = LoggerFactory.getLogger(TripService.class);
     
 
-    @Autowired
+    
     private TripRepository tripsRepository;
 
-    @Autowired
+    
     CurrencyExchangeService currencyExchangeService;
+
+    @Autowired
+    public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService) {
+        this.tripsRepository = tripsRepository;
+        this.currencyExchangeService = currencyExchangeService;
+    }
 
     public boolean tripExists(int tripID) {
         return tripsRepository.existsById(tripID);

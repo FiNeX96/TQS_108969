@@ -11,8 +11,13 @@ import tqs.deti.models.Bus;
 @Service
 public class BusService {
 
-    @Autowired
+    
     private BusRepository busRepository;
+
+    @Autowired
+    public BusService(BusRepository busRepository) {
+        this.busRepository = busRepository;
+    }
 
     public Bus getBus(int id) {
         return busRepository.findById(id);

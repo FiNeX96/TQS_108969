@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
 
 @Service
 public class CurrencyExchangeService {
@@ -78,7 +79,22 @@ public class CurrencyExchangeService {
             logger.info("Cache is not valid, redoing exchange rates request");
         }
 
+        List<String> allowedHosts = List.of("https://v6.exchangerate-api.com/v6/");
+
         String api_link = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
+        
+        boolean isValid = false;
+
+        for (String host : allowedHosts) {
+            if (api_link.startsWith(host)) {
+                isValid = true;
+                break;
+            }
+        }
+
+        if (!isValid) {
+            throw new Exception("Invalid API link");
+        }
 
         String content = doRequest(api_link);
 

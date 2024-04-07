@@ -38,17 +38,26 @@ public class TicketController {
 
     private static final Logger logger = LoggerFactory.getLogger(TicketController.class);
 
-    @Autowired
+    
     private TicketService ticketService;
 
-    @Autowired
+    
     private BusService busService;
 
-    @Autowired
+    
     private TripService tripService;
 
-    @Autowired
+    
     private TicketFieldValidator ticketFieldValidator;
+
+    @Autowired
+    public TicketController(TicketService ticketService, BusService busService, TripService tripService,
+            TicketFieldValidator ticketFieldValidator) {
+        this.ticketService = ticketService;
+        this.busService = busService;
+        this.tripService = tripService;
+        this.ticketFieldValidator = ticketFieldValidator;
+    }
 
     @PostMapping("/buy")
     public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket) {
