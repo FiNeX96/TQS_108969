@@ -40,15 +40,15 @@ public class TripService {
         double exchangeRate = 1.0;
 
         try {
-            logger.info(String.format("Exchanging currency from EUR to %s", currency));
+            logger.info("Exchanging currency from EUR to {}", currency);
             exchangeRate = currencyExchangeService.exchange("EUR", currency);
         } catch (Exception e) {
-            logger.error("Error exchanging currency: %s", e.getMessage());
+            logger.error("Error exchanging currency: {}", e.getMessage());
         }
 
         trip.setPrice(trip.getPrice() * exchangeRate);
 
-        logger.info("Trip with id %d requested in currency %s", tripID, currency);
+        logger.info("Trip with id {} requested in currency {}", tripID, currency);
 
         return trip;
     }

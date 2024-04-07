@@ -40,7 +40,7 @@ public class CurrencyExchangeService {
     public boolean cacheExchangeRates(Map<String, Object> rates) {
         cachedRates = rates;
         lastCaching = System.currentTimeMillis();
-        logger.info("Caching exchange rates at %s for %d milliseconds", lastCaching, cacheTTL);
+        logger.info("Caching exchange rates at {} for {} milliseconds", lastCaching, cacheTTL);
         return true;
     }
 

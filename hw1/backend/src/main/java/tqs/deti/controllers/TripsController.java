@@ -40,7 +40,7 @@ public class TripsController {
 
     @GetMapping("/get")
     public ResponseEntity<Trip> getTrip(@RequestParam int id, @RequestParam(required=false) String currency) {
-        logger.info("Trip with id %s requested", id);
+        logger.info("Trip with id {} requested", id);
         return ResponseEntity.ok(tripService.getTrip(id, currency));
     }
 

@@ -9,12 +9,12 @@ public class TicketFieldValidator {
     private static final Logger logger = LoggerFactory.getLogger(TicketFieldValidator.class);
 
     public boolean validateEmail(String email) {
-        logger.info("Validating email: %s", email);
+        logger.info("Validating email: {}", email);
         return email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
     }
 
     public boolean validatePhone(int phone) {
-        logger.info("Validating phone: %d", phone);
+        logger.info("Validating phone: {}", phone);
         return String.valueOf(phone).matches("^\\d{9}$");
     }
 
