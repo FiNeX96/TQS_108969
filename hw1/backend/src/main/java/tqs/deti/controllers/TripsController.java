@@ -26,7 +26,7 @@ public class TripsController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Trip>> listTrips(@RequestParam(required = false) String origin,
-            @RequestParam(required = false) String destination, @RequestParam(required = false) String date , @RequestParam(required = false) String currency) throws Exception {
+            @RequestParam(required = false) String destination, @RequestParam(required = false) String date , @RequestParam(required = false) String currency) {
 
         logger.info("List of trips requested");
     return ResponseEntity.ok(tripService.listTripsFiltered(origin, destination, date, currency));

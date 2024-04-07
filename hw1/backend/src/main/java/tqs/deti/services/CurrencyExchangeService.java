@@ -90,9 +90,11 @@ public class CurrencyExchangeService {
 
         double rate;
 
-        
-        rate = obj.getJSONObject("conversion_rates").getDouble(to);
-
+        try {
+            rate = obj.getJSONObject("conversion_rates").getDouble(to);
+        } catch (Exception e) {
+            throw new Exception("Currency not found");
+        }
 
         return rate;
 

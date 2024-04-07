@@ -67,7 +67,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTripsFiltered() throws Exception {
+    public void testListTripsFiltered() {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList());
 
         assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "EUR"))
@@ -78,7 +78,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTripsFilteredWithResults() throws Exception {
+    public void testListTripsFilteredWithResults() {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(new Trip(), new Trip()));
 
         assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "EUR"))
@@ -122,7 +122,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTripsWithoutEuro() throws Exception {
+    public void testListTripsWithoutEuro() {
 
         Trip trip = new Trip();
         trip.setPrice(10.0);
