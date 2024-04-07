@@ -64,7 +64,8 @@ public class TicketService {
             return ticket;
 
         } catch (Exception e) {
-            logger.info(String.format("Error purchasing ticket with id %d", ticket.getId()));
+
+            logger.info(String.format("Error purchasing ticket with id %s", e.getMessage()));
             return null;
         }
 
