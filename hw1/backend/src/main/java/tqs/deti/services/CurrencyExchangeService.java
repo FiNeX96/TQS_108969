@@ -93,7 +93,9 @@ public class CurrencyExchangeService {
             throw new Exception("Invalid API link");
         }
 
-        String content = doRequest(apiLink);
+        URL url = new URL(apiLink);
+
+        String content = doRequest(url);
 
         JSONObject obj = new JSONObject(content);
 
@@ -113,9 +115,7 @@ public class CurrencyExchangeService {
 
     }
 
-    public String doRequest(String link) throws Exception {
-
-        URL url = new URL(link);
+    public String doRequest(URL url) throws Exception {
 
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
