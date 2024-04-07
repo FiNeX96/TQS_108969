@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+
 import tqs.deti.services.CurrencyExchangeService;
 
 
@@ -39,12 +40,15 @@ import tqs.deti.services.CurrencyExchangeService;
 
     }
 
+    @Test
      void testListCurrencies() throws Exception  {
 
         assertThat(currencyExchangeService.listCurrencies())
         .contains("EUR","USD");
 
     }
+
+
 
 
 }
