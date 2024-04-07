@@ -24,13 +24,19 @@ import tqs.deti.repositories.TripRepository;
 @ConditionalOnProperty(name = "spring.profiles.active", havingValue = "dev")
 public class DefaultValues implements ApplicationRunner {
 
-    private final static Logger logger = LoggerFactory.getLogger(DefaultValues.class);
+    private static final  Logger logger = LoggerFactory.getLogger(DefaultValues.class);
 
-    @Autowired
+    
     private BusRepository busRepository;
 
-    @Autowired
+    
     private TripRepository tripRepository;
+
+    @Autowired
+    public DefaultValues(BusRepository busRepository, TripRepository tripRepository) {
+        this.busRepository = busRepository;
+        this.tripRepository = tripRepository;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -135,7 +141,7 @@ public class DefaultValues implements ApplicationRunner {
         trip4.setDate("2021-03-02");
         trip4.setTime("14:00");
 
-        ArrayList<Seat> seatsBus4 = new ArrayList<Seat>(bus4.getTotalSeats());
+        ArrayList<Seat> seatsBus4 = new ArrayList<>(bus4.getTotalSeats());
         for (int i = 0; i < bus4.getTotalSeats(); i++) {
             seatsBus4.add(new Seat()); // Create and add a new Seat object
         }
@@ -169,7 +175,7 @@ public class DefaultValues implements ApplicationRunner {
             trip.setDate("2021-03-" + (tripNumber + 1)); // Adjust date accordingly
             trip.setTime("10:00");
 
-            ArrayList<Seat> seats = new ArrayList<Seat>(bus5.getTotalSeats());
+            ArrayList<Seat> seats = new ArrayList<>(bus5.getTotalSeats());
             for (int i = 0; i < bus5.getTotalSeats(); i++) {
                 seats.add(new Seat()); // Create and add a new Seat object
             }

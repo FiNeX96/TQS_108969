@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.is;
 import tqs.deti.controllers.BusController;
 
 @WebMvcTest(controllers = BusController.class,properties="spring.profiles.active=test")
-public class BusControllerTest {
+class BusControllerTest {
 
     @Autowired
     private MockMvc mvc;

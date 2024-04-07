@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-public class busRepoTest {
+class BusRepoTest {
 
     @Autowired
     private BusRepository busRepository;

@@ -19,7 +19,7 @@ import tqs.deti.models.Bus;
 import tqs.deti.repositories.TicketRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class TicketServiceTest {
+class TicketServiceTest {
 
     @Mock
     private TicketRepository ticketRepository;
@@ -40,7 +40,7 @@ public class TicketServiceTest {
     void testFindTicketsByID() {
         when(ticketRepository.findByTripID(1)).thenReturn(Arrays.asList());
 
-        assertThat(ticketService.findTicketsByID(1)).hasSize(0);
+        assertThat(ticketService.findTicketsByID(1)).isEmpty();
 
         verify(ticketRepository, times(1)).findByTripID(1);
     }
@@ -49,7 +49,7 @@ public class TicketServiceTest {
     void testFindAllTickets() {
         when(ticketRepository.findAll()).thenReturn(Arrays.asList());
 
-        assertThat(ticketService.findAllTickets()).hasSize(0);
+        assertThat(ticketService.findAllTickets()).isEmpty();
 
         verify(ticketRepository, times(1)).findAll();
     }

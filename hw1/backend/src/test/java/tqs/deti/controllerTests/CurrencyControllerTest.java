@@ -23,7 +23,7 @@ import java.util.Set;
 
 
 @WebMvcTest(controllers = CurrencyController.class, properties="spring.profiles.active=test")
-public class CurrencyControllerTest {
+class CurrencyControllerTest {
 
     @Autowired
     private MockMvc mvc;

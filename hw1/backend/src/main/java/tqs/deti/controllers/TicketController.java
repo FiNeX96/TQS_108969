@@ -82,13 +82,13 @@ public class TicketController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Trip not found");
         }
 
-        int givenSeat_index = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber();
+        int givenSeatIndex = ticket.getSeatNumber() - trip.getSeats().get(0).getNumber();
 
-        if (givenSeat_index < 0 || givenSeat_index >= trip.getSeats().size()) {
+        if (givenSeatIndex < 0 || givenSeatIndex >= trip.getSeats().size()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid seat number");
         }
 
-        ticket.setSeatNumber(givenSeat_index + 1);
+        ticket.setSeatNumber(givenSeatIndex + 1);
 
         Bus tripBus = busService.getBus(trip.getBusID());
 
@@ -102,7 +102,7 @@ public class TicketController {
 
         List<Seat> seats = trip.getSeats();
 
-        Seat seat = seats.get(givenSeat_index);
+        Seat seat = seats.get(givenSeatIndex);
 
         if (seat.isTaken()) {
             logger.info("Seat already taken on ticket purchase " + ticket.getId());
@@ -136,7 +136,7 @@ public class TicketController {
         // add the busID and time to each ticket
 
         // convert to TicketData
-        List<TicketData> ticketData = new ArrayList<TicketData>();
+        List<TicketData> ticketData = new ArrayList<>();
 
         for (Ticket t : tickets) {
             TicketData td = new TicketData();

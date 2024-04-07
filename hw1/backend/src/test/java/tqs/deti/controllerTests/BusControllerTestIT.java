@@ -15,7 +15,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties="spring.profiles.active=test")
 @AutoConfigureTestDatabase
-public class BusControllerTestIT {
+class BusControllerTestIT {
 
     @LocalServerPort
     int randomServerPort;
@@ -27,7 +27,7 @@ public class BusControllerTestIT {
     private BusRepository busRepository;
 
     @Test
-    public void whenPostBus_thenCreateBus() {
+    void whenPostBus_thenCreateBus() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");
         bus.setTotalSeats(50);
@@ -38,7 +38,7 @@ public class BusControllerTestIT {
     }
 
     @Test
-    public void whenHaveBuses_thenGetBuses() {
+     void whenHaveBuses_thenGetBuses() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");
         bus.setTotalSeats(50);
@@ -49,13 +49,13 @@ public class BusControllerTestIT {
         busRepository.saveAndFlush(bus2);
         ResponseEntity<Bus[]> response = restTemplate.getForEntity("/bus/list", Bus[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().length).isEqualTo(2);
+        assertThat(response.getBody()).hasSize(2);
         assertThat(response.getBody()[0].getName()).isEqualTo("bus bue fixe");
         assertThat(response.getBody()[0].getTotalSeats()).isEqualTo(50);
     }
 
     @Test
-    public void whenHaveABus_getABus() {
+    void whenHaveABus_getABus() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");
         bus.setTotalSeats(50);

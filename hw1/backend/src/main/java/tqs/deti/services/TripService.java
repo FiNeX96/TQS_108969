@@ -41,18 +41,18 @@ public class TripService {
             return trip;
         }
 
-        double exchange_rate = 1.0;
+        double exchangeRate = 1.0;
 
         try {
             System.out.println("Exchanging currency from EUR to " + currency);
-            exchange_rate = currencyExchangeService.exchange("EUR", currency);
+            exchangeRate = currencyExchangeService.exchange("EUR", currency);
         } catch (Exception e) {
-
+            logger.error("Error exchanging currency: %s", e.getMessage());
         }
 
-        trip.setPrice(trip.getPrice() * exchange_rate);
+        trip.setPrice(trip.getPrice() * exchangeRate);
 
-        logger.info("Trip with id " + tripID + " requested" + " in currency " + currency);
+        logger.info("Trip with id %d requested in currency %s", tripID, currency);
 
         return trip;
     }
@@ -61,24 +61,23 @@ public class TripService {
         return tripsRepository.findAll();
     }
 
-    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency) {
+    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency) throws Exception {
 
-        List<Trip> trips = new ArrayList<Trip>();
+        List<Trip> trips;
         trips = tripsRepository.findByOriginAndDestinationAndDate(origin, destination, date);
 
         if (currency == null || currency.equals("EUR")) { // EUR is base currency, no need to exchange
             return trips;
         }
 
-        double exchange_rate = 1.0;
+        double exchangeRate = 1.0;
 
-        try {
-            exchange_rate = currencyExchangeService.exchange("EUR", currency);
-        } catch (Exception e) {
-        }
+        
+        exchangeRate = currencyExchangeService.exchange("EUR", currency);
+   
 
         for (Trip trip : trips) {
-            trip.setPrice(trip.getPrice() * exchange_rate);
+            trip.setPrice(trip.getPrice() * exchangeRate);
         }
 
         logger.info("List of trips requested ");

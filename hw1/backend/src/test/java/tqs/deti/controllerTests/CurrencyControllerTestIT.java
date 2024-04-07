@@ -14,13 +14,13 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.profiles.active=test")
 @AutoConfigureTestDatabase
-public class CurrencyControllerTestIT {
+class CurrencyControllerTestIT {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void whenDoExchange_thenGetResponse() {
+    void whenDoExchange_thenGetResponse() {
         ResponseEntity<String> response = restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
                 String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -31,7 +31,7 @@ public class CurrencyControllerTestIT {
     }
 
     @Test
-    public void whenMultipleExchanges_thenGetCachedRates() {
+    void whenMultipleExchanges_thenGetCachedRates() {
         ResponseEntity<String> response = restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
                 String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

@@ -19,7 +19,7 @@ import tqs.deti.repositories.TripRepository;
 import tqs.deti.models.Trip;
 
 @ExtendWith(MockitoExtension.class)
-public class TripServiceTest {
+class TripServiceTest {
 
     @Mock
     private TripRepository tripRepository;
@@ -29,7 +29,7 @@ public class TripServiceTest {
 
 
     @Test
-    public void testGetDates() {
+     void testGetDates() {
         when(tripRepository.findDates()).thenReturn(Arrays.asList("2021-05-01", "2021-05-02", "2021-05-03"));
 
         assertThat(tripService.getDates())
@@ -42,7 +42,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testGetOrigins() {
+     void testGetOrigins() {
         when(tripRepository.findOrigins()).thenReturn(Arrays.asList("Aveiro", "Porto", "Lisboa"));
 
         assertThat(tripService.getOrigins())
@@ -55,7 +55,7 @@ public class TripServiceTest {
 
     
     @Test
-    public void testGetDestinations() {
+     void testGetDestinations() {
         when(tripRepository.findDestinations()).thenReturn(Arrays.asList("Aveiro", "Porto", "Lisboa"));
 
         assertThat(tripService.getDestinations())
@@ -67,18 +67,18 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTripsFiltered() {
+     void testListTripsFiltered() throws Exception {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList());
 
         assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "EUR"))
-        .hasSize(0);
+        .isEmpty();
         
         verify(tripRepository, times(1)).findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01");
 
     }
 
     @Test
-    public void testListTripsFilteredWithResults() {
+     void testListTripsFilteredWithResults() throws Exception {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(new Trip(), new Trip()));
 
         assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "EUR"))
@@ -89,7 +89,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testGetTripWithoutResults() {
+     void testGetTripWithoutResults() {
         when(tripRepository.findById(1)).thenReturn(null);
 
         assertThat(tripService.getTrip(1, "EUR")).isNull();
@@ -99,7 +99,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testGetTripWithResults() {
+     void testGetTripWithResults() {
 
         when(tripRepository.findById(1)).thenReturn(new Trip());
 
@@ -110,7 +110,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTrips() {
+     void testListTrips() {
         
         when(tripRepository.findAll()).thenReturn(Arrays.asList(new Trip(), new Trip()));
 
@@ -122,7 +122,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testListTripsWithoutEuro() {
+     void testListTripsWithoutEuro() throws Exception{
 
         Trip trip = new Trip();
         trip.setPrice(10.0);
@@ -138,7 +138,7 @@ public class TripServiceTest {
     }
 
     @Test
-    public void testGetTripWithoutEuro() {
+     void testGetTripWithoutEuro() {
         Trip trip = new Trip();
         trip.setPrice(10.0);
         when(tripRepository.findById(1)).thenReturn(trip);

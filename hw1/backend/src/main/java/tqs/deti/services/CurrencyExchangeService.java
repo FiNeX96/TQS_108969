@@ -21,7 +21,7 @@ public class CurrencyExchangeService {
     private static final Logger logger = LoggerFactory.getLogger(CurrencyExchangeService.class);
 
     private Set<String> currencies;
-    Map<String, Object> cachedRates = new HashMap<String, Object>();
+    Map<String, Object> cachedRates = new HashMap<>();
     private int cacheTTL = 3600 * 1000; // 1 hour
     private long lastCaching = 0;
     private String apiKey = "9a42f01a628d9752376f4eaf";
@@ -32,13 +32,13 @@ public class CurrencyExchangeService {
 
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;
-        cachedRates = new HashMap<String, Object>();
+        cachedRates = new HashMap<>();
     }
 
     public boolean cacheExchangeRates(Map<String, Object> rates) {
         cachedRates = rates;
         lastCaching = System.currentTimeMillis();
-        logger.info("Caching exchange rates at " + lastCaching + " for " + cacheTTL + " milliseconds");
+        logger.info("Caching exchange rates at %s for %d milliseconds", lastCaching, cacheTTL);
         return true;
     }
 
@@ -51,12 +51,7 @@ public class CurrencyExchangeService {
             return false;
         }
 
-        if (System.currentTimeMillis() < lastCaching + cacheTTL) {
-
-            return true;
-        } else {
-            return false;
-        }
+        return System.currentTimeMillis() < lastCaching + cacheTTL;
 
     }
 
@@ -81,12 +76,12 @@ public class CurrencyExchangeService {
 
         List<String> allowedHosts = List.of("https://v6.exchangerate-api.com/v6/");
 
-        String api_link = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
+        String apiLink = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/" + from;
         
         boolean isValid = false;
 
         for (String host : allowedHosts) {
-            if (api_link.startsWith(host)) {
+            if (apiLink.startsWith(host)) {
                 isValid = true;
                 break;
             }
@@ -96,9 +91,9 @@ public class CurrencyExchangeService {
             throw new Exception("Invalid API link");
         }
 
-        String content = doRequest(api_link);
+        String content = doRequest(apiLink);
 
-        JSONObject obj = new JSONObject(content.toString());
+        JSONObject obj = new JSONObject(content);
 
         cacheExchangeRates(obj.getJSONObject("conversion_rates").toMap());
 

@@ -31,7 +31,7 @@ public class TripsController {
 
     @GetMapping("/list")
     public ResponseEntity<List<Trip>> listTrips(@RequestParam(required = false) String origin,
-            @RequestParam(required = false) String destination, @RequestParam(required = false) String date , @RequestParam(required = false) String currency) {
+            @RequestParam(required = false) String destination, @RequestParam(required = false) String date , @RequestParam(required = false) String currency) throws Exception {
 
         logger.info("List of trips requested");
     return ResponseEntity.ok(tripService.listTripsFiltered(origin, destination, date, currency));
@@ -40,7 +40,7 @@ public class TripsController {
 
     @GetMapping("/get")
     public ResponseEntity<Trip> getTrip(@RequestParam int id, @RequestParam(required=false) String currency) {
-        logger.info("Trip with id " + id + " requested");
+        logger.info("Trip with id %s requested", id);
         return ResponseEntity.ok(tripService.getTrip(id, currency));
     }
 

@@ -28,7 +28,7 @@ import org.junit.jupiter.api.BeforeAll;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.profiles.active=test")
 @AutoConfigureTestDatabase
 @TestInstance(Lifecycle.PER_CLASS)
-public class TicketControllerTestIT {
+class TicketControllerTestIT {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -121,7 +121,7 @@ public class TicketControllerTestIT {
 
         ResponseEntity<Ticket[]> response = restTemplate.getForEntity("/tickets/list", Ticket[].class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody().length).isEqualTo(1);
+        assertThat(response.getBody()).hasSize(1);
         assertThat(response.getBody()[0].getEmail()).isEqualTo("josecalcas@gmail.com");
     }
 

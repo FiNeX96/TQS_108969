@@ -19,7 +19,7 @@ import tqs.deti.controllers.TripsController;
 import tqs.deti.services.TripService;
 import tqs.deti.models.Trip;
 @WebMvcTest(controllers = TripsController.class, properties="spring.profiles.active=test")
-public class TripControllerTest {
+class TripControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -28,7 +28,7 @@ public class TripControllerTest {
     private TripService tripService;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         
         when(tripService.getDates()).thenReturn(List.of("2021-05-01", "2021-05-02", "2021-05-03"));
         when(tripService.getOrigins()).thenReturn(List.of("Aveiro", "Porto", "Lisboa"));

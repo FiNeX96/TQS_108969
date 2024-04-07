@@ -2,7 +2,6 @@ package tqs.deti.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scripting.bsh.BshScriptUtils.BshExecutionException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,7 +41,7 @@ public class BusController {
     @GetMapping("/get")
     public ResponseEntity<Bus> getBus(@RequestParam int id) {
         Bus bus = busService.getBus(id);
-        logger.info("Bus with id " + id + " requested");
+        logger.info("Bus with id %s requested", id);
         if (bus != null) {
             return ResponseEntity.ok(bus);
         } else {

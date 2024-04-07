@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import tqs.deti.services.CurrencyExchangeService;
 
 
-public class cacheTest {
+ class CacheTest {
 
 
     private static CurrencyExchangeService currencyExchangeService = new CurrencyExchangeService(5000); // 5 seconds of cache ttl
 
 
     @Test
-    public void testResultAfterTTLExpire() throws Exception {
+    void testResultAfterTTLExpire() throws Exception {
 
         currencyExchangeService.exchange("EUR", "USD");
         assert (currencyExchangeService.isCacheValid());
@@ -28,7 +28,7 @@ public class cacheTest {
     }
 
     @Test
-    public void testResultBeforeTTLExpire() throws Exception {
+     void testResultBeforeTTLExpire() throws Exception {
 
         currencyExchangeService.exchange("EUR", "USD");
         assert (currencyExchangeService.isCacheValid());
@@ -39,7 +39,7 @@ public class cacheTest {
 
     }
 
-    public void testListCurrencies() throws Exception  {
+     void testListCurrencies() throws Exception  {
 
         assertThat(currencyExchangeService.listCurrencies())
         .contains("EUR","USD");

@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @DataJpaTest
-public class tripRepoTest {
+class TripRepoTest {
 
     @Autowired
     private TripRepository tripRepository;

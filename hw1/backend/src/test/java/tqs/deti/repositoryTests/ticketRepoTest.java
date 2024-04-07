@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @DataJpaTest
-public class ticketRepoTest {
+ class TicketRepoTest {
 
     @Autowired
     private TicketRepository ticketRepository;

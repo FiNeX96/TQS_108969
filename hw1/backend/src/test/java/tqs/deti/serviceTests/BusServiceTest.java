@@ -20,7 +20,7 @@ import tqs.deti.models.Bus;
 import tqs.deti.repositories.BusRepository;
 
 @ExtendWith(MockitoExtension.class)
-public class BusServiceTest {
+class BusServiceTest {
 
     @Mock
     private BusRepository busRepository;
@@ -29,7 +29,7 @@ public class BusServiceTest {
     private BusService busService;
 
     @Test
-    public void testGetBusById() {
+    void testGetBusById() {
 
         Bus bus = new Bus();
         bus.setId(1);
@@ -46,7 +46,7 @@ public class BusServiceTest {
 
     @Test
 
-    public void testFindAllBus() {
+    void testFindAllBus() {
 
         Bus bus1 = new Bus();
         bus1.setId(1);
@@ -70,7 +70,7 @@ public class BusServiceTest {
 
     @Test
 
-    public void testAddBus() {
+    void testAddBus() {
 
         Bus bus = new Bus();
         bus.setId(1);
