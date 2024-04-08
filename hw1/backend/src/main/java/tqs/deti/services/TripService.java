@@ -14,13 +14,13 @@ import org.slf4j.LoggerFactory;
 public class TripService {
 
     private static final Logger logger = LoggerFactory.getLogger(TripService.class);
-    
+
     private TripRepository tripsRepository;
 
     private CurrencyExchangeService currencyExchangeService;
 
     @Autowired
-    public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService) {
+    public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService) throws Exception {
         this.tripsRepository = tripsRepository;
         this.currencyExchangeService = currencyExchangeService;
     }
@@ -29,7 +29,7 @@ public class TripService {
         return tripsRepository.existsById(tripID);
     }
 
-    public Trip getTrip(int tripID, String currency) {
+    public Trip getTrip(int tripID, String currency) throws Exception {
 
         Trip trip = tripsRepository.findById(tripID);
 
@@ -39,12 +39,10 @@ public class TripService {
 
         double exchangeRate = 1.0;
 
-        try {
-            logger.info("Exchanging currency from EUR to {}", currency);
-            exchangeRate = currencyExchangeService.exchange("EUR", currency);
-        } catch (Exception e) {
-            logger.error("Error exchanging currency: {}", e.getMessage());
-        }
+        
+        logger.info("Exchanging currency from EUR to {}", currency);
+        exchangeRate = currencyExchangeService.exchange("EUR", currency);
+
 
         trip.setPrice(trip.getPrice() * exchangeRate);
 
@@ -57,7 +55,8 @@ public class TripService {
         return tripsRepository.findAll();
     }
 
-    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency) throws Exception {
+    public List<Trip> listTripsFiltered(String origin, String destination, String date, String currency)
+            throws Exception {
 
         List<Trip> trips;
         trips = tripsRepository.findByOriginAndDestinationAndDate(origin, destination, date);
@@ -68,13 +67,8 @@ public class TripService {
 
         double exchangeRate = 1.0;
 
-        try {
-            logger.info("Exchanging currency from EUR to {}", currency);
-            exchangeRate = currencyExchangeService.exchange("EUR", currency);
-        } catch (Exception e) {
-            logger.error("Error exchanging currency: {}", e.getMessage());
-        }
-   
+        logger.info("Exchanging currency from EUR to {}", currency);
+        exchangeRate = currencyExchangeService.exchange("EUR", currency);
 
         for (Trip trip : trips) {
             trip.setPrice(trip.getPrice() * exchangeRate);

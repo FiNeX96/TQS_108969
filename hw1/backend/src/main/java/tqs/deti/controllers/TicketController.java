@@ -48,14 +48,14 @@ public class TicketController {
 
     @Autowired
     public TicketController(TicketService ticketService, BusService busService, TripService tripService,
-            TicketFieldValidator ticketFieldValidator) {
+            TicketFieldValidator ticketFieldValidator) throws Exception {
         this.ticketService = ticketService;
         this.tripService = tripService;
         this.ticketFieldValidator = ticketFieldValidator;
     }
 
     @PostMapping("/buy")
-    public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket) {
+    public ResponseEntity<Ticket> buyTicket(@RequestBody Ticket ticket)  throws Exception {
 
         logger.info("Ticket purchase requested for trip {} and seat {}", ticket.getTripID(), ticket.getSeatNumber() );
 
@@ -99,7 +99,7 @@ public class TicketController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<TicketData>> listTickets() {
+    public ResponseEntity<List<TicketData>> listTickets() throws Exception {
 
         List<Ticket> tickets = ticketService.findAllTickets();
         // add the busID and time to each ticket

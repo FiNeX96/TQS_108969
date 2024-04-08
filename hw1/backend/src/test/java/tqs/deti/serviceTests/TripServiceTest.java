@@ -93,7 +93,7 @@ class TripServiceTest {
     }
 
     @Test
-     void testGetTripWithoutResults() {
+     void testGetTripWithoutResults() throws Exception {
         when(tripRepository.findById(1)).thenReturn(null);
 
         assertThat(tripService.getTrip(1, "EUR")).isNull();
@@ -103,7 +103,7 @@ class TripServiceTest {
     }
 
     @Test
-     void testGetTripWithResults() {
+     void testGetTripWithResults() throws Exception {
 
         when(tripRepository.findById(1)).thenReturn(new Trip());
 
