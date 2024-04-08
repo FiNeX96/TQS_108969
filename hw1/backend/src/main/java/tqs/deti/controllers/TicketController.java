@@ -21,7 +21,6 @@ import tqs.deti.services.TripService;
 import tqs.deti.models.Ticket;
 import tqs.deti.models.Trip;
 import tqs.deti.models.Seat;
-import tqs.deti.models.Bus;
 import tqs.deti.models.TicketData;
 import tqs.deti.services.TicketFieldValidator;
 

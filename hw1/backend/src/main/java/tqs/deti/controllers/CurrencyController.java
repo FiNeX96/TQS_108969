@@ -12,6 +12,7 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.Map;
 
 
 @RestController
@@ -40,6 +41,15 @@ public class CurrencyController {
     @GetMapping("/exchange")
     public ResponseEntity<Double> exchange(String from, String to) throws Exception {
         return ResponseEntity.ok(currencyExchangeService.exchange(from, to));
+    }
+
+    @GetMapping("/cache_stats")
+    public ResponseEntity<Map<String,Integer>> cacheStats() {
+
+        int cacheHits = currencyExchangeService.getCacheHits();
+        int cacheMisses = currencyExchangeService.getCacheMisses(); 
+        Map<String, Integer> stats = Map.of("cacheHits", cacheHits, "cacheMisses", cacheMisses);
+        return ResponseEntity.ok(stats);
     }
 
 }

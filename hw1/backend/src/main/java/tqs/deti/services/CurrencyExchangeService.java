@@ -26,6 +26,8 @@ public class CurrencyExchangeService {
     private long lastCaching = 0;
     private String apiKey = "9a42f01a628d9752376f4eaf";
     private String exchangeRates = "conversion_rates";
+    private int cacheHits;
+    private int cacheMisses;
 
     public CurrencyExchangeService(int ttl) {
         cacheTTL = ttl;
@@ -35,6 +37,26 @@ public class CurrencyExchangeService {
     @Autowired
     public CurrencyExchangeService() {
         cachedRates = new HashMap<>();
+    }
+
+    public int getCacheHits() {
+        return cacheHits;
+    }
+
+    public int getCacheMisses() {
+        return cacheMisses;
+    }
+
+    public void setCacheHits(int hits) {
+        cacheHits = hits;
+    }
+
+    public void setCacheMisses(int misses) {
+        cacheMisses = misses;
+    }
+
+    public void cleanCachedRates() {
+        cachedRates.clear();
     }
 
     public boolean cacheExchangeRates(Map<String, Object> rates) {
@@ -70,13 +92,13 @@ public class CurrencyExchangeService {
 
             Double rate = Double.parseDouble(cachedRates.get(to).toString());
             logger.info("Cache hit, returning exchange rate");
+            cacheHits++;
             return rate;
 
-        } else {
-            logger.info("Cache is not valid, redoing exchange rates request");
-        }
+        } 
 
-
+        logger.info("Cache is not valid, redoing exchange rates request");
+        cacheMisses++;
         String baseApiUrl = "https://v6.exchangerate-api.com/v6/";
 
         List<String> allowedFrom = List.of("EUR", "USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK",
@@ -131,5 +153,7 @@ public class CurrencyExchangeService {
 
         return content.toString();
     }
+
+
 
 }
