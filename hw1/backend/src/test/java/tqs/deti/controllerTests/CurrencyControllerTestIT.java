@@ -11,8 +11,11 @@ import org.springframework.http.ResponseEntity;
 
 import tqs.deti.services.CurrencyExchangeService;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import static org.assertj.core.api.Assertions.assertThat;
+import org.springframework.core.ParameterizedTypeReference;
+
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.profiles.active=test")
@@ -50,8 +53,7 @@ class CurrencyControllerTestIT {
 
     }
 
-
-    @Test 
+    @Test
     void testCacheHitsAndMisses() {
 
         // clean cache hits and misses
@@ -61,20 +63,31 @@ class CurrencyControllerTestIT {
         currencyExchangeService.cleanCachedRates();
 
         restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
-        String.class);
+                String.class);
 
-        ResponseEntity<Map> response2 = restTemplate.getForEntity("/currencies/cache_stats",Map.class);
+        ResponseEntity<Map<String, Integer>> response2 = restTemplate.exchange(
+                "/currencies/cache_stats",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Map<String, Integer>>() {
+                });
 
-        assertThat(response2.getBody().get("cacheHits")).isEqualTo(0);
-        assertThat(response2.getBody().get("cacheMisses")).isEqualTo(1);
+        assertThat(response2.getBody()).containsEntry("cacheHits", 0);
+        assertThat(response2.getBody()).containsEntry("cacheMisses", 1);
 
-        restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
-        String.class);
+        // For /currencies/exchange?from=EUR&to=USD
+        restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD", String.class);
 
-        ResponseEntity<Map> response4 = restTemplate.getForEntity("/currencies/cache_stats", Map.class);
+        // For /currencies/cache_stats again
+        ResponseEntity<Map<String, Integer>> response4 = restTemplate.exchange(
+                "/currencies/cache_stats",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Map<String, Integer>>() {
+                });
 
-        assertThat(response4.getBody().get("cacheHits")).isEqualTo(1);
-        assertThat(response4.getBody().get("cacheMisses")).isEqualTo(1);
+        assertThat(response4.getBody()).containsEntry("cacheHits", 1);
+        assertThat(response4.getBody()).containsEntry("cacheMisses", 1);
 
     }
 

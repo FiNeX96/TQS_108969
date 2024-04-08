@@ -66,10 +66,8 @@ public class TripService {
             return trips;
         }
 
-        double exchangeRate = 1.0;
-
         
-        exchangeRate = currencyExchangeService.exchange("EUR", currency);
+        double exchangeRate = currencyExchangeService.exchange("EUR", currency);
    
 
         for (Trip trip : trips) {
