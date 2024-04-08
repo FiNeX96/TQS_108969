@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,7 +39,8 @@ class TripControllerTest {
 
     }
 
-    @Test 
+    @Test
+    @DisplayName("Test getting all the dates for trips")
     void whenHaveDates_thenReturnAll() throws Exception {
         
         mvc.perform(get("/trips/get_dates"))
@@ -50,6 +52,7 @@ class TripControllerTest {
 
 
     @Test 
+    @DisplayName("Test getting all the origins for trips")
     void whenHaveOrigins_thenReturnAll() throws Exception {
         
         mvc.perform(get("/trips/get_origins"))
@@ -60,6 +63,7 @@ class TripControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting all the destinations for trips")
     void whenHaveDestinations_thenReturnAll() throws Exception {
         
         mvc.perform(get("/trips/get_destinations"))
@@ -70,6 +74,7 @@ class TripControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting all the trips with filter search")
     void whenListTrips_findExistentTrip() throws Exception {
         
         mvc.perform(get("/trips/list?origin=Aveiro&destination=Porto&date=2021-05-01&currency=EUR"))
@@ -80,6 +85,7 @@ class TripControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting a trip by id that doesnt exist")
     void whenLookForNonExistentTrip_findNothing() throws Exception {
         
         mvc.perform(get("/trips/get?id=5&currency=EUR"))
@@ -89,6 +95,7 @@ class TripControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting a trip by id that exists")
     void whenLookForExistentTrip_findTrip() throws Exception {
         
         mvc.perform(get("/trips/get?id=1&currency=EUR"))
@@ -98,6 +105,7 @@ class TripControllerTest {
     }
 
     @Test 
+    @DisplayName("Test getting trips with filters with no results")
     void whenListTripsThatDontExist_thenGetEmptyResponse() throws Exception {
         
         mvc.perform(get("/trips/list?origin=Lisboa&destination=Porto&date=2021-05-03&currency=EUR"))
@@ -108,6 +116,7 @@ class TripControllerTest {
     }
 
     @Test 
+    @DisplayName("Test getting a trip with invalid ID")
     void whenGetTripWithInvalidID_thenGiveError() throws Exception {
         
         mvc.perform(get("/trips/get?id=banana&currency=EUR"))

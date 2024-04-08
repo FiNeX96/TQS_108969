@@ -7,6 +7,7 @@ import tqs.deti.services.CurrencyExchangeService;
 
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import tqs.deti.controllers.CurrencyController;
@@ -41,6 +42,7 @@ class CurrencyControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting all the currencies")
     void whenGetCurrencies_thenReturnCurrencies() throws Exception {
 
         mvc.perform(get("/currencies/list"))
@@ -53,6 +55,7 @@ class CurrencyControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting the exchange rate between two currencies")
     void whenGetExchange_thenReturnExchange() throws Exception {
 
         mvc.perform(get("/currencies/exchange?from=EUR&to=USD"))

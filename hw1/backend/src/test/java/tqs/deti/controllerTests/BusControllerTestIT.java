@@ -5,6 +5,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tqs.deti.repositories.BusRepository;
 import tqs.deti.models.Bus;
@@ -27,6 +28,7 @@ class BusControllerTestIT {
     private BusRepository busRepository;
 
     @Test
+    @DisplayName("Test saving a bus ")
     void whenPostBus_thenCreateBus() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");
@@ -38,6 +40,7 @@ class BusControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test getting all buses")
      void whenHaveBuses_thenGetBuses() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");
@@ -55,6 +58,7 @@ class BusControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test getting a bus by ID")
     void whenHaveABus_getABus() {
         Bus bus = new Bus();
         bus.setName("bus bue fixe");

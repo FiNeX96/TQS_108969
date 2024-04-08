@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.springframework.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.profiles.active=test")
@@ -117,6 +118,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test getting all tickets present in the database")
     void whenHaveTickets_thenGetTickets() {
 
         ResponseEntity<Ticket[]> response = restTemplate.getForEntity("/tickets/list", Ticket[].class);
@@ -126,6 +128,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test creating a ticket")
     void whenPostTicket_thenReturn200() {
 
         ResponseEntity<Ticket> response = restTemplate.postForEntity("/tickets/buy", ticket, Ticket.class);
@@ -134,6 +137,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test creating two tickets for the same trip in the same seat")
     void whenPost2TicketsSameSeatForSameTrip_thenGiveError() {
 
         Ticket ticket2 = new Ticket();
@@ -150,6 +154,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test buying a ticket with a invalid email")
     void whenPostInvalidEmail_thenGiveError() {
         Ticket ticket3 = new Ticket();
         ticket3.setEmail("mariapena");
@@ -164,6 +169,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test buying a ticket with a invalid phone")
     void whenPostInvalidPhone_thenGiveError() {
         Ticket ticket4 = new Ticket();
         ticket4.setEmail("albertojoaquim@ua.pt");
@@ -179,6 +185,7 @@ class TicketControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test buying a ticket for a trip that does not exist")
     void whenPostTicketForInvalidTrip_thenGiveError() {
         Ticket ticket5 = new Ticket();
         ticket5.setEmail("albertojoaquim@ua.pt");
@@ -194,6 +201,7 @@ class TicketControllerTestIT {
     }
 
     @Test 
+    @DisplayName("Test buying a ticket for a seat that does not exist")
     void whenPostTicketForInvalidSeat_thenGiveError() {
         Ticket ticket5 = new Ticket();
         ticket5.setEmail("albertojoaquim@ua.pt");

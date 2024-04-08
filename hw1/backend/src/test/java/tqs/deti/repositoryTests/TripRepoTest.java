@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tqs.deti.repositories.TripRepository;
 import tqs.deti.models.Trip;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,6 +19,7 @@ class TripRepoTest {
     private TripRepository tripRepository;
 
     @Test
+    @DisplayName("Test saving a trip and then finding it by ID")
     void whenSaved_thenFindById() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -33,6 +36,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting a trip and then confirming it is not found")
     void whenDelete_thenNotFound() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -49,6 +53,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test saving a trip and then finding it by origin")
     void whenSaved_thenFindByOrigin() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -65,6 +70,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting a trip and then finding it by origin")
     void whenDeleteByOrigin_thenNotFound() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -81,6 +87,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting all trips and then trying to find any")
     void whenDeleteAll_thenEmpty() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -95,6 +102,7 @@ class TripRepoTest {
     }
 
     @Test 
+    @DisplayName("Test saving a trip and then finding it by destination")
     void whenSaved_thenFindByDestination() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -111,6 +119,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting a trip by its destination and then finding it")
     void whenDeleteByDestination_thenNotFound() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");
@@ -127,6 +136,7 @@ class TripRepoTest {
     }
 
     @Test
+    @DisplayName("Test saving a trip and then finding it by time")
     void whenSaved_thenFindByTime() {
         Trip trip = new Trip();
         trip.setOrigin("Aveiro");

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import tqs.deti.repositories.TicketRepository;
 import tqs.deti.models.Ticket;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,6 +18,7 @@ import java.util.List;
     private TicketRepository ticketRepository;
 
     @Test
+    @DisplayName("Test saving a ticket and then finding it by ID")
     void whenSaved_thenFindById() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -31,6 +34,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test deleting a ticket and then confirming it is not found")
     void whenDelete_thenNotFound() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -46,6 +50,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test saving a ticket and then finding it by trip ID")
     void whenSaved_thenFindByTripID() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -61,6 +66,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test deleting a ticket by trip ID and then confirming it is not found")
     void whenDeleteByTripID_thenNotFound() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -76,6 +82,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test saving a ticket and then finding it by seat number and trip ID")
     void whenSaved_thenFindBySeatNumberAndTripID() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -92,6 +99,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test deleting a ticket and then confirming it is not found when searching by it seat number and trip ID")
     void whenDelete_thenNotFoundBySeatNumberAndTripID() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");
@@ -107,6 +115,7 @@ import java.util.List;
     }
 
     @Test
+    @DisplayName("Test deleting all tickets and then trying to find any")
     void whenDeleteAll_thenEmpty() {
         Ticket ticket = new Ticket();
         ticket.setPrice("10€");

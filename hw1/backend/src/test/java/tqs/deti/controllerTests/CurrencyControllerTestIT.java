@@ -4,6 +4,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.Map;
 
@@ -29,6 +30,7 @@ class CurrencyControllerTestIT {
     private CurrencyExchangeService currencyExchangeService;
 
     @Test
+    @DisplayName("Test that there is a response when a currency exchange is made")
     void whenDoExchange_thenGetResponse() {
         ResponseEntity<String> response = restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
                 String.class);
@@ -39,7 +41,8 @@ class CurrencyControllerTestIT {
 
     }
 
-    @Test
+    @Test 
+    @DisplayName("Test that the response is cached when the same exchange is made twice")
     void whenMultipleExchanges_thenGetCachedRates() {
         ResponseEntity<String> response = restTemplate.getForEntity("/currencies/exchange?from=EUR&to=USD",
                 String.class);
@@ -54,6 +57,7 @@ class CurrencyControllerTestIT {
     }
 
     @Test
+    @DisplayName("Test that the cache hits and misses are updated correctly")
     void testCacheHitsAndMisses() {
 
         // clean cache hits and misses

@@ -1,5 +1,6 @@
 package tqs.deti.serviceTests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -28,6 +29,7 @@ class TicketServiceTest {
     private TicketService ticketService;
 
     @Test
+    @DisplayName("Test seat available for trip")
     void testSeatAvailableForTrip() {
         when(ticketRepository.findBySeatNumberAndTripID(1, 1)).thenReturn(null);
 
@@ -37,6 +39,7 @@ class TicketServiceTest {
     }
 
     @Test
+    @DisplayName("Test finding tickets by ID")
     void testFindTicketsByID() {
         when(ticketRepository.findByTripID(1)).thenReturn(Arrays.asList());
 
@@ -46,6 +49,7 @@ class TicketServiceTest {
     }
 
     @Test
+    @DisplayName("Test finding all tickets")
     void testFindAllTickets() {
         when(ticketRepository.findAll()).thenReturn(Arrays.asList());
 
@@ -55,6 +59,7 @@ class TicketServiceTest {
     }
 
     @Test
+    @DisplayName("Test buying a null ticket")
     void testBuyNullTicket() {
         Bus bus = new Bus();
         bus.setId(1);

@@ -1,5 +1,6 @@
 package tqs.deti.serviceTests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -29,6 +30,7 @@ class BusServiceTest {
     private BusService busService;
 
     @Test
+    @DisplayName("Test getting bus by ID")
     void testGetBusById() {
 
         Bus bus = new Bus();
@@ -45,7 +47,7 @@ class BusServiceTest {
     }
 
     @Test
-
+    @DisplayName("Test getting all buses")
     void testFindAllBus() {
 
         Bus bus1 = new Bus();
@@ -69,7 +71,7 @@ class BusServiceTest {
     }
 
     @Test
-
+    @DisplayName("Test adding bus")
     void testAddBus() {
 
         Bus bus = new Bus();

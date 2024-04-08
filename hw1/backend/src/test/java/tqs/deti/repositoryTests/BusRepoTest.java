@@ -7,6 +7,9 @@ import tqs.deti.models.Bus;
 import tqs.deti.repositories.BusRepository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
@@ -16,6 +19,7 @@ class BusRepoTest {
     private BusRepository busRepository;
 
     @Test
+    @DisplayName("Test saving a bus and then finding it by ID")
     void whenSaved_thenFindById() {
         Bus bus = new Bus();
         bus.setName("Bus 1");
@@ -30,6 +34,7 @@ class BusRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting a bus and then confirming it is not found")
     void whenDelete_thenNotFound() {
         Bus bus = new Bus();
         bus.setName("Bus 2");
@@ -44,6 +49,7 @@ class BusRepoTest {
     }
 
     @Test
+    @DisplayName("Test saving a bus and then finding it by name")
     void whenSaved_thenFindByName() {
         Bus bus = new Bus();
         bus.setName("Bus 3");
@@ -58,6 +64,7 @@ class BusRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting a bus by name and then confirming it is not found")
     void whenDeleteByName_thenNotFound() {
         Bus bus = new Bus();
         bus.setName("Bus 4");
@@ -72,6 +79,7 @@ class BusRepoTest {
     }
 
     @Test
+    @DisplayName("Test deleting all buses and then confirming it is empty")
     void whenDeleteAll_thenEmpty() {
         Bus bus = new Bus();
 
@@ -85,6 +93,7 @@ class BusRepoTest {
     }
 
     @Test
+    @DisplayName("Test saving various buses and then finding all")
     void whenVariousBus_thenFindAll() {
         Bus bus1 = new Bus();
 

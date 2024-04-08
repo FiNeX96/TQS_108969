@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tqs.deti.repositories.TripRepository;
 import tqs.deti.models.Trip;
 import tqs.deti.services.CurrencyExchangeService;
+import org.junit.jupiter.api.DisplayName;
 
 @ExtendWith(MockitoExtension.class)
 class TripServiceTest {
@@ -33,6 +34,7 @@ class TripServiceTest {
 
 
     @Test
+    @DisplayName("Test getting all the dates for trips")
      void testGetDates() {
         when(tripRepository.findDates()).thenReturn(Arrays.asList("2021-05-01", "2021-05-02", "2021-05-03"));
 
@@ -46,6 +48,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting all the origins for trips")
      void testGetOrigins() {
         when(tripRepository.findOrigins()).thenReturn(Arrays.asList("Aveiro", "Porto", "Lisboa"));
 
@@ -59,6 +62,7 @@ class TripServiceTest {
 
     
     @Test
+    @DisplayName("Test getting all the destinations for trips")
      void testGetDestinations() {
         when(tripRepository.findDestinations()).thenReturn(Arrays.asList("Aveiro", "Porto", "Lisboa"));
 
@@ -71,6 +75,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting all the trips with filter search")
      void testListTripsFiltered() throws Exception {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList());
 
@@ -82,6 +87,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting all the trips with filter search with results")
      void testListTripsFilteredWithResults() throws Exception {
         when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(new Trip(), new Trip()));
 
@@ -93,6 +99,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting a trip by id without results")
      void testGetTripWithoutResults() throws Exception {
         when(tripRepository.findById(1)).thenReturn(null);
 
@@ -103,6 +110,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting a trip by id with results")
      void testGetTripWithResults() throws Exception {
 
         when(tripRepository.findById(1)).thenReturn(new Trip());
@@ -114,6 +122,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting all the trips")
      void testListTrips() {
         
         when(tripRepository.findAll()).thenReturn(Arrays.asList(new Trip(), new Trip()));
@@ -127,6 +136,7 @@ class TripServiceTest {
 
 
     @Test
+    @DisplayName("Test getting a trip with currency exchange")
     public void testGetTripWithoutEuro() throws Exception {
       Trip trip = new Trip();
       trip.setPrice(10.0);
@@ -140,6 +150,7 @@ class TripServiceTest {
     }
 
     @Test
+    @DisplayName("Test getting multiple trips with currency exchange")
     void testTripsFilteredWithCurrencyExchange() throws Exception {
         Trip trip = new Trip();
         trip.setPrice(10.0);

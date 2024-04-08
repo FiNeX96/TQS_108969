@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import org.junit.jupiter.api.DisplayName;
 
 import tqs.deti.controllers.BusController;
 
@@ -55,6 +56,7 @@ class BusControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting all buses")
     void whenHaveBuses_thenReturnAll() throws Exception {
 
         mvc.perform(get("/bus/list")
@@ -68,6 +70,7 @@ class BusControllerTest {
     }
 
     @Test
+    @DisplayName("Test getting a bus by ID")
     void whenHaveBus_thenGetBus() throws Exception {
 
         mvc.perform(get("/bus/get?id=1")
@@ -80,7 +83,8 @@ class BusControllerTest {
     }
 
     @Test 
-    void whenNoBus_thenGetBus() throws Exception {
+    @DisplayName("Test getting a non-existent bus by id")
+    void whenNoBus_thenNoGetBus() throws Exception {
 
         mvc.perform(get("/bus/get?id=32")
                 .contentType("application/json"))
