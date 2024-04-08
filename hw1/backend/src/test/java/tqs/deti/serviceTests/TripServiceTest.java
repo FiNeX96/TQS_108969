@@ -17,12 +17,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import tqs.deti.repositories.TripRepository;
 import tqs.deti.models.Trip;
+import tqs.deti.services.CurrencyExchangeService;
 
 @ExtendWith(MockitoExtension.class)
 class TripServiceTest {
 
     @Mock
     private TripRepository tripRepository;
+
+    @Mock
+    private CurrencyExchangeService currencyExchangeService;
 
     @InjectMocks
     private TripService tripService;
@@ -123,15 +127,28 @@ class TripServiceTest {
 
 
     @Test
-     void testGetTripWithoutEuro() {
+    public void testGetTripWithoutEuro() throws Exception {
+      Trip trip = new Trip();
+      trip.setPrice(10.0);
+      when(tripRepository.findById(1)).thenReturn(trip);
+      // Mock the currency exchange to return a value greater than 1
+      when(currencyExchangeService.exchange("EUR", "USD")).thenReturn(1.2);
+    
+      assertThat(tripService.getTrip(1, "USD").getPrice()).isEqualTo(12.0);
+    
+      verify(tripRepository, times(1)).findById(1);
+    }
+
+    @Test
+    void testTripsFilteredWithCurrencyExchange() throws Exception {
         Trip trip = new Trip();
         trip.setPrice(10.0);
-        when(tripRepository.findById(1)).thenReturn(trip);
-
+        when(tripRepository.findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01")).thenReturn(Arrays.asList(trip));
+        when(currencyExchangeService.exchange("EUR", "USD")).thenReturn(1.2);
         // rate may change, so we need to use a range
-        assertThat(tripService.getTrip(1, "USD").getPrice()).isBetween(10.0, 12.0);
+        assertThat(tripService.listTripsFiltered("Aveiro", "Porto", "2021-05-01", "USD").get(0).getPrice()).isEqualTo(12.0);
         
-        verify(tripRepository, times(1)).findById(1);
+        verify(tripRepository, times(1)).findByOriginAndDestinationAndDate("Aveiro", "Porto", "2021-05-01");
 
     }
 

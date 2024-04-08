@@ -66,8 +66,14 @@ public class TripService {
             return trips;
         }
 
-        
-        double exchangeRate = currencyExchangeService.exchange("EUR", currency);
+        double exchangeRate = 1.0;
+
+        try {
+            logger.info("Exchanging currency from EUR to {}", currency);
+            exchangeRate = currencyExchangeService.exchange("EUR", currency);
+        } catch (Exception e) {
+            logger.error("Error exchanging currency: {}", e.getMessage());
+        }
    
 
         for (Trip trip : trips) {
