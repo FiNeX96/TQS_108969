@@ -20,7 +20,7 @@ public class TripService {
     private CurrencyExchangeService currencyExchangeService;
 
     @Autowired
-    public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService) throws Exception {
+    public TripService(TripRepository tripsRepository, CurrencyExchangeService currencyExchangeService)  {
         this.tripsRepository = tripsRepository;
         this.currencyExchangeService = currencyExchangeService;
     }
@@ -37,11 +37,11 @@ public class TripService {
             return trip;
         }
 
-        double exchangeRate = 1.0;
+        
 
         
         logger.info("Exchanging currency from EUR to {}", currency);
-        exchangeRate = currencyExchangeService.exchange("EUR", currency);
+        double exchangeRate = currencyExchangeService.exchange("EUR", currency);
 
 
         trip.setPrice(trip.getPrice() * exchangeRate);
@@ -65,10 +65,9 @@ public class TripService {
             return trips;
         }
 
-        double exchangeRate = 1.0;
 
         logger.info("Exchanging currency from EUR to {}", currency);
-        exchangeRate = currencyExchangeService.exchange("EUR", currency);
+        double exchangeRate = currencyExchangeService.exchange("EUR", currency);
 
         for (Trip trip : trips) {
             trip.setPrice(trip.getPrice() * exchangeRate);

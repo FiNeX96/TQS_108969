@@ -48,7 +48,7 @@ public class TicketController {
 
     @Autowired
     public TicketController(TicketService ticketService, BusService busService, TripService tripService,
-            TicketFieldValidator ticketFieldValidator) throws Exception {
+            TicketFieldValidator ticketFieldValidator)  {
         this.ticketService = ticketService;
         this.tripService = tripService;
         this.ticketFieldValidator = ticketFieldValidator;

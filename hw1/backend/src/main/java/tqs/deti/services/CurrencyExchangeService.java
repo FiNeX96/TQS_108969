@@ -88,6 +88,10 @@ public class CurrencyExchangeService {
 
     public double exchange(String from, String to) throws Exception {
 
+        if (from.equals(to)) {
+            return 1.0;
+        }
+
         if (isCacheValid()) {
 
             Double rate = Double.parseDouble(cachedRates.get(to).toString());
