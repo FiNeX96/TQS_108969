@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 
 function Tickets() {
   const navigate = useNavigate();
+  const [filteredData, setFilteredData] = useState([]); // Separate state for filtered tickets
   const [showAll, setShowAll] = useState(false);
-
 
   const getTickets = useQuery({
     queryKey: ["tickets"],
@@ -29,26 +29,22 @@ function Tickets() {
   };
 
   const seeAll = () => {
+    setFilteredData(ticketsData); // Show all tickets
     setShowAll(true);
   };
 
-    const searchByTicketID = (e) => {
+  const searchByTicketID = (e) => {
     const ticketID = e.target.value;
     if (ticketID === "") {
+      setFilteredData(ticketsData); // Show all if input is empty
       setShowAll(true);
     } else {
-      setShowAll(false);
-      const filteredData = ticketsData.filter(
-        (ticket) => ticket.id === ticketID
-      );
-      if (filteredData.length > 0) {
-        ticketsData = filteredData;
-        setShowAll(true);
-      } else {
-        ticketsData = [];
-      }
+      setShowAll(false); // Initially hide results when filtering
+      const filtered = ticketsData.filter((ticket) => ticket.id === ticketID);
+      setFilteredData(filtered);
+      setShowAll(true); // Show results after filtering
     }
-};
+  };
 
   return (
     <>
@@ -104,7 +100,7 @@ function Tickets() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ticketsData.map((ticket) => (
+                  {filteredData.map((ticket) => (
                     <tr key={ticket.id} className="border-b border-gray-200">
                       <td className="text-gray-700 px-4 py-2">
                         {ticket.tripID}
