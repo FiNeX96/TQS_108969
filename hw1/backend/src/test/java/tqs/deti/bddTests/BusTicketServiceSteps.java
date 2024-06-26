@@ -31,8 +31,6 @@ public class BusTicketServiceSteps {
     private BuyTicketPage buyTicketPage;
     private ListTripsPage listTripsPage;
 
-
-
     @Given("the user entered in the website")
     public void the_user_entered_in_the_website() {
         driver = new ChromeDriver();

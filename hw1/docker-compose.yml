@@ -1,7 +1,6 @@
 
 services:
 
-
   react:
     build: 
       context: ./frontend

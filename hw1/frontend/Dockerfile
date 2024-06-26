@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
+RUN npm install
+
 # Copy the source code
 COPY . .
 
@@ -14,4 +16,4 @@ COPY . .
 EXPOSE 5173
 
 # Run the application
-CMD ["npm", "run", "dev"]
+CMD ["ls"]
